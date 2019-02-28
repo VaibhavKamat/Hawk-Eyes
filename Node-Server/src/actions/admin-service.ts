@@ -1,12 +1,21 @@
 import * as _ from 'lodash';
 import * as Promise from 'bluebird';
-import { Request, Response, NextFunction } from 'express';
+import * as express from 'express';
+import * as dbUtils from '../utils/db-utils';
 
-export function sampleGetUsersService(req: Request, res: Response, next: NextFunction, url: URL): void {
-  const someSampleParam = req.query.someSampleParam;
-  console.log(someSampleParam);
-  res.status(200).send({
-    success: true,
-    message: "Successfully fetched!!"
-  })
+export function setCoordinatesService(req: express.Request, res: express.Response, next: express.NextFunction): void {
+  const locationData = req.body;
+  dbUtils.setCoordinates(locationData).then((result) => {
+    res.status(200).send(result);
+  }).catch((err) => {
+    next(err);
+  });
+};
+
+export function getCoordinatesService(req: express.Request, res: express.Response, next: express.NextFunction): void {
+  dbUtils.getCoordinates().then((result) => {
+    res.status(200).send(result);
+  }).catch((err) => {
+    next(err);
+  });
 };

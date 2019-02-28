@@ -1,13 +1,7 @@
 {
   "port": 3000,
   "db": {
-      "connection_limit": 5,
-      "host": "localhost",
-      "user": "root",
-      "password": "root",
-      "database": "account_schema",
-      "port": "3306",
-      "debug": false
+      "uri": "mongodb://127.0.0.1:27017/hawk-eyes-db"
   },
   "dev_endpoints": {
     "swagger": true

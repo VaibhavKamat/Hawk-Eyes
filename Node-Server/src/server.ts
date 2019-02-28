@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as bodyParser from 'body-parser';
-import * as DroneData from './dataService';
+import * as dbUtils from './utils/db-utils';
 
 const SWAGGER_UX_PATH = '/docs';
 const SWAGGER_UX_API_PATH = '/api-docs';
@@ -12,7 +12,6 @@ const SWAGGER_CONFIG = 'swagger';
 
 let app: express.Application = express();
 let port: number = config.get('port') as number;
-
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -33,9 +32,6 @@ if (isNaN(port)) {
 let swaggerPath = path.resolve(__dirname, './swagger.yaml');
 let controllerPath = path.resolve(__dirname, './actions');
 let rootPath = '/hawkeyes/v1';
-app.get('/getCoordinates',DroneData.getCoordinates);
-app.post('/setCoordinates',DroneData.setCoordinates);
-
 
 try {
   initExpress();
