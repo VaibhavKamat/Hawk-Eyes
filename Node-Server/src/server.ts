@@ -4,6 +4,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as bodyParser from 'body-parser';
 import * as dbUtils from './utils/db-utils';
+import {intiateSocketFlow} from './mainController';
 
 const SWAGGER_UX_PATH = '/docs';
 const SWAGGER_UX_API_PATH = '/api-docs';
@@ -32,6 +33,7 @@ if (isNaN(port)) {
 let swaggerPath = path.resolve(__dirname, './swagger.yaml');
 let controllerPath = path.resolve(__dirname, './actions');
 let rootPath = '/hawkeyes/v1';
+intiateSocketFlow();
 
 try {
   initExpress();
