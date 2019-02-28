@@ -1,7 +1,7 @@
 """
 Starting point of rest application
 """
-from flask import Flask, json, request
+from flask import Flask, json, request, Response
 
 import pprint
 
@@ -104,6 +104,16 @@ class Instance:
 
 drone = Instance()
 
+camera_map = {
+    0: "Scene",
+    1: "DepthPlanner",
+    2: "DepthPerspective",
+    3: "DepthVis",
+    4: "DisparityNormalized",
+    5: "Segmentation",
+    6: "SurfaceNormals",
+    7: "Infrared"
+}
 command_map = {
     1: {
         "method": drone.take_off,
@@ -151,9 +161,6 @@ def _execute(command_request):
 app = Flask(__name__)
 
 
-# app.register_blueprint(command_api)
-
-
 @app.route("/")
 def hello():
     return "Hello User!"
@@ -176,6 +183,17 @@ def process_command():
             mimetype='application/json'
         )
     return response
+
+
+@app.route('/video_feed')
+def video_feed():
+    drone2 = Instance()
+    camera_name = '0'
+    image_type = airsim.ImageType.Scene
+    return Response(
+        drone2.frame_generator(camera_name, image_type),
+        mimetype='multipart/x-mixed-replace; boundary=frame'
+    )
 
 
 if __name__ == '__main__':
