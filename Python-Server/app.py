@@ -1,108 +1,14 @@
 """
 Starting point of rest application
 """
+import airsim
 from flask import Flask, json, request, Response
 
-import pprint
+from core import drone_handler, map
 
-import airsim
-import cv2
-import numpy as np
+command_drone = drone_handler.Instance()
 
-
-class Instance:
-    """
-    Drone Handler class
-    """
-
-    def __init__(self):
-        """
-        constructor
-        """
-        self.__initiate()
-
-    def __initiate(self):
-        """
-        Initiate the drone client
-        :return: None
-        """
-        self.client = airsim.MultirotorClient()
-        self.client.confirmConnection()
-        self.client.enableApiControl(True)
-
-    def start(self):
-        """
-        Start the drone
-        :return:
-        """
-        self.client.enableApiControl(True)
-        self.client.armDisarm(True)
-
-    def take_off(self):
-        """
-        Calls the takeoffAsync method.
-        :return:
-        """
-        print("in take_off method")
-        self.start()
-        self.client.takeoffAsync().join()
-
-    def move(self, x, y, z, v):
-        """
-        move the drone
-        :param x:
-        :param y:
-        :param z:
-        :param v:
-        :return:
-        """
-        print(x, y, z, v)
-        self.client.moveToPositionAsync(x, y, z, v).join()
-
-    def reset(self):
-        """
-        Reset the drone state
-        :return:
-        """
-        self.client.enableApiControl(True)
-        self.client.armDisarm(False)
-        self.client.reset()
-
-    def get_landing_state(self):
-        """
-        get landing state of the drone
-        :return:
-        """
-        return self.client.getMultirotorState().landed_state
-
-    def is_flying(self):
-        """
-        Checks if the drone is flying
-        :return:
-        """
-        return self.get_landing_state() == 1
-
-    def get_stats(self):
-        """
-        Gets the state of the drone
-        :return:
-        """
-        state = self.client.getMultirotorState()
-        return pprint.pformat(state)
-
-    def frame_generator(self, camera_name, image_type):
-        decode_extension = '.jpg'
-        while True:
-            response_image = self.client.simGetImage(camera_name, image_type)
-            np_response_image = np.asarray(bytearray(response_image), dtype="uint8")
-            decoded_frame = cv2.imdecode(np_response_image, cv2.IMREAD_COLOR)
-            ret, encoded_jpeg = cv2.imencode(decode_extension, decoded_frame)
-            frame = encoded_jpeg.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-
-
-drone = Instance()
+command_map = map.get_command_map(command_drone)
 
 camera_map = {
     0: "Scene",
@@ -113,32 +19,6 @@ camera_map = {
     5: "Segmentation",
     6: "SurfaceNormals",
     7: "Infrared"
-}
-command_map = {
-    1: {
-        "method": drone.take_off,
-        "args": False,
-        "response": {
-            "code": 200,
-            "value": drone.get_landing_state
-        }
-    },
-    2: {
-        "method": drone.move,
-        "args": True,
-        "response": {
-            "code": 200,
-            "value": drone.get_stats
-        }
-    },
-    3: {
-        "method": drone.reset,
-        "args": None,
-        "response": {
-            "code": 200,
-            "value": drone.get_landing_state
-        }
-    },
 }
 
 
@@ -161,11 +41,6 @@ def _execute(command_request):
 app = Flask(__name__)
 
 
-@app.route("/")
-def hello():
-    return "Hello User!"
-
-
 @app.route("/command", methods=['POST', 'GET'])
 def process_command():
     if request.method == 'POST':
@@ -185,15 +60,17 @@ def process_command():
     return response
 
 
-@app.route('/video_feed')
-def video_feed():
-    drone2 = Instance()
-    camera_name = '0'
-    image_type = airsim.ImageType.Scene
-    return Response(
-        drone2.frame_generator(camera_name, image_type),
-        mimetype='multipart/x-mixed-replace; boundary=frame'
+@app.route("/connection_stat", methods=['GET'])
+def connection_stat():
+    code = 200
+    value = command_drone.ping_and_confirm_connection()
+    response = app.response_class(
+        response=json.dumps(value),
+        status=code,
+        mimetype='application/json'
     )
+
+    return response
 
 
 if __name__ == '__main__':
