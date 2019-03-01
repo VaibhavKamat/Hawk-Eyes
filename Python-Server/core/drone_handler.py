@@ -109,12 +109,19 @@ class Instance:
         return pprint.pformat(position)
 
     def frame_generator(self, camera_name, image_type):
+        idx = 1
         decode_extension = '.jpg'
         while True:
             response_image = self.client.simGetImage(camera_name, image_type)
-            np_response_image = np.asarray(bytearray(response_image), dtype="uint8")
-            decoded_frame = cv2.imdecode(np_response_image, cv2.IMREAD_COLOR)
-            ret, encoded_jpeg = cv2.imencode(decode_extension, decoded_frame)
-            frame = encoded_jpeg.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+            if response_image is not None:
+                print(response_image)
+                file_name = "data/scene" + idx
+                np_response_image = np.asarray(bytearray(response_image), dtype="uint8")
+                airsim.write_png(file_name, np_response_image)
+                decoded_frame = cv2.imdecode(np_response_image, cv2.IMREAD_COLOR)
+                ret, encoded_jpeg = cv2.imencode(decode_extension, decoded_frame)
+                frame = encoded_jpeg.tobytes()
+                idx = idx + 1
+                yield (b'--frame\r\n'
+                       b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')

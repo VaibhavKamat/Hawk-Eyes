@@ -7,16 +7,14 @@ from flask import Flask, Response
 from core import drone_handler
 
 video_feed_drone = drone_handler.Instance()
-
-camera_map = {
-    0: "Scene",
-    1: "DepthPlanner",
-    2: "DepthPerspective",
-    3: "DepthVis",
-    4: "DisparityNormalized",
-    5: "Segmentation",
-    6: "SurfaceNormals",
-    7: "Infrared"
+default_camera_type = "scene"
+cameraTypeMap = {
+ "depth": airsim.ImageType.DepthVis,
+ "segmentation": airsim.ImageType.Segmentation,
+ "seg": airsim.ImageType.Segmentation,
+ "scene": airsim.ImageType.Scene,
+ "disparity": airsim.ImageType.DisparityNormalized,
+ "normals": airsim.ImageType.SurfaceNormals
 }
 
 app = Flask(__name__)
