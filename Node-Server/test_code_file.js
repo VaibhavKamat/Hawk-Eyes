@@ -22,7 +22,17 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.post('/takeoff', (request, response) => {
 
+  console.log("takeoff");
+
+  var data = {
+    'id': 1
+  };
+
+  performPostRequest(request,response,data);
+  
+})
 function performPostRequest(request,response,data){
 
   post_data = JSON.stringify(data);
