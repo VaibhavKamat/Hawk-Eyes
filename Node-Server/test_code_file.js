@@ -33,6 +33,19 @@ app.post('/takeoff', (request, response) => {
   performPostRequest(request,response,data);
   
 })
+
+app.post('/move', (request, response) => {
+
+  console.log("moving");
+
+  var data = request.body;
+  console.log(request.body);
+
+  performPostRequest(request,response,data);
+
+})
+
+
 function performPostRequest(request,response,data){
 
   post_data = JSON.stringify(data);
