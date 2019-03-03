@@ -1,7 +1,8 @@
 {
   "port": 3000,
-  "dronePort" : 8080,
+  "dronePort" : 5000,
   "droneHost" : "127.0.0.1",
+  "videoFeedPort" : 5001,
   "db": {
       "uri": "mongodb://127.0.0.1:27017/hawk-eyes-db"
   },
