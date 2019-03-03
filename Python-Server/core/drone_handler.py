@@ -1,5 +1,6 @@
 import pprint
 
+from airsim.types import Quaternionr
 import airsim
 import cv2
 import numpy as np
@@ -103,6 +104,16 @@ class Instance:
         """
         state = self.client.getMultirotorState()
         return pprint.pformat(state)
+
+    def set_camera_orientation(self, orientation: Quaternionr):
+        """
+        Gets the state of the drone
+        :return:
+        """
+        self.client.simSetCameraOrientation(airsim.ImageType.Scene, orientation)
+
+    def get_camera_info(self):
+        return pprint.pformat(self.client.getCameraInfo(airsim.ImageType.Scene))
 
     def get_position(self):
         position = self.client.simGetGroundTruthKinematics().position

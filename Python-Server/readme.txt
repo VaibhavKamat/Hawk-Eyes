@@ -36,3 +36,24 @@ curl -X POST \
     "id": 3
 
 }'
+
+4) Move Camera
+
+curl -X POST \
+  http://localhost:5000/command \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 63eb84c1-7fe5-4791-bc28-fdd57218b15f' \
+  -H 'cache-control: no-cache' \
+  -d '{
+    "id": 4,
+    "args": {
+        "orientation": {
+            "w_val": 1,
+            "x_val": 0,
+            "y_val": 0,
+            "z_val": 0
+        }
+    }
+}'
+
+Note: Use only z_value(0 < z_value < 1) for now.
