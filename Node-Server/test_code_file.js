@@ -44,7 +44,16 @@ app.post('/move', (request, response) => {
   performPostRequest(request,response,data);
 
 })
+app.post('/camera', (request, response) => {
 
+  console.log("camera");
+
+  var data = request.body;
+  console.log(request.body);
+
+  performPostRequest(request,response,data);
+
+})
 
 function performPostRequest(request,response,data){
 
