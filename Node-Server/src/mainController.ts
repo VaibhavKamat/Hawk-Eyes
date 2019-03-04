@@ -3,6 +3,7 @@ import { Request, Response } from 'express'
 import * as dbUtils from './utils/db-utils';
 import * as server from './server'
 import * as net from 'net'
+import * as fetch from 'fetch'
 var http = require('http');
 let http2 = require('http').Server(server);
 let io = require('socket.io')(http2);
@@ -56,6 +57,7 @@ export function intiateSocketFlow(){
 
     startEmittingLocations(coordinatesArray)
     // console.log('Server listening for drone on ' + droneHost +':'+ dronePort);
+    // sendCoordinatesDrone(coordinatesArray)
     getVideoFeed({},function(data){
       console.log("video feed Data")
       console.log(data);
@@ -75,9 +77,18 @@ async function delay(milliseconds: number) {
     });
 }
 
-async function logUsers (userIds) {
-  userIds.forEach(async userId => {
-    const response = await fetch(`/api/users/${userId}`);
+async function sendCoordinatesDrone (coordinates) {
+
+  
+  coordinates.forEach(async coordinateObj => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(coordinateObj),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const response = await fetch(`/setCoordinates`, options);
     const user = await response.json();
     console.log(user);
   });
