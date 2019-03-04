@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-from flask import Flask, render_template, Response,send_file
-from camera import Camera
+from flask import Flask, render_template,request,json, Response,send_file
+# from camera import Camera
 
-import cv2
-cap = cv2.VideoCapture('android.mp4') 
+# import cv2
+# cap = cv2.VideoCapture('android.mp4') 
 app = Flask(__name__)
 
 @app.route('/')
@@ -27,8 +27,20 @@ def video_feed():
 
 @app.route('/get_image')
 def get_image():
-    filename = 'pair2.jpg'
+    filename = 'flower3.jpg'
     return send_file(filename, mimetype='image/jpeg')
+
+
+@app.route('/setCoordinates', methods=['POST', 'GET'])
+def setCoordinates():
+    request.json.update({"message" :"Recieved and Sent from Python"})
+    requestBody = json.dumps(request.json)
+    return Response(
+        response= requestBody,
+        status=200,
+        mimetype='application/json'
+    )
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)
