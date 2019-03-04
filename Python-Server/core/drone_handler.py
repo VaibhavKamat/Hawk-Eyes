@@ -4,7 +4,7 @@ from airsim.types import Quaternionr
 import airsim
 import cv2
 import numpy as np
-
+from vehicle_detection_main import run_detection
 
 class Instance:
     """
@@ -126,7 +126,7 @@ class Instance:
             response_image = self.client.simGetImage(camera_name, image_type)
 
             if response_image is not None:
-                print(response_image)
+                # print(response_image)
                 np_response_image = np.asarray(bytearray(response_image), dtype="uint8")
                 decoded_frame = cv2.imdecode(np_response_image, cv2.IMREAD_COLOR)
                 ret, encoded_jpeg = cv2.imencode(decode_extension, decoded_frame)
@@ -134,3 +134,23 @@ class Instance:
                 idx = idx + 1
                 yield (b'--frame\r\n'
                        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+    def ml_frame_generator(self, camera_name, image_type):
+        idx = 1
+        decode_extension = '.jpg'
+        while True:
+            frame = self.client.simGetImage(camera_name, image_type)
+
+            if frame is not None:
+                np_response_image = np.asarray(bytearray(frame), dtype="uint8")
+                decoded_frame = cv2.imdecode(np_response_image, cv2.IMREAD_COLOR)
+                #ret, encoded_jpeg = cv2.imencode(decode_extension, decoded_frame)
+                output_frame = run_detection(decoded_frame)
+                ret, encoded_jpeg = cv2.imencode(decode_extension, output_frame)
+                print('is it in?')
+                frame = encoded_jpeg.tobytes()
+                idx = idx + 1
+                yield (b'--frame\r\n'
+                       b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+
