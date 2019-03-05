@@ -3,7 +3,9 @@ import { Request, Response } from 'express'
 import * as dbUtils from './utils/db-utils';
 import * as server from './server'
 import * as net from 'net'
-import * as fetch from 'fetch'
+var fetch = require('node-fetch');
+const Bluebird = require('bluebird');
+fetch = Bluebird.promisifyAll(fetch);
 var http = require('http');
 let http2 = require('http').Server(server);
 let io = require('socket.io')(http2);
@@ -12,6 +14,7 @@ let geoCoordinatesOffset : { "x" : number , "y" : number , "z" : number };
 var geoStartCoordinates = { "x" : 120 , "y" : 110 , "z" : 100 };
 let dronePort : Number = config.get('dronePort') as Number;
 let droneHost : Function = config.get('droneHost') as Function;
+let videoFeedPort : Number = config.get('videoFeedPort') as Number;
 let locationCounter = 0;
 let coordinatesArray = [
     {  "x": 100,
@@ -32,8 +35,9 @@ export function intiateSocketFlow(){
         io.emit('locationChanged', coordinates);
         
     });
-    // var client = new net.Socket();
-    // client.connect(dronePort,droneHost,function(){
+    var client = new net.Socket();
+    
+    // client.connect(50000,"localhost",function(){
     //     console.log("connected to python")
     //     client.write("commandReceived")
     // });
@@ -57,44 +61,53 @@ export function intiateSocketFlow(){
 
     startEmittingLocations(coordinatesArray)
     // console.log('Server listening for drone on ' + droneHost +':'+ dronePort);
-    // sendCoordinatesDrone(coordinatesArray)
+   
     getVideoFeed({},function(data){
       console.log("video feed Data")
       console.log(data);
     })
 }
 
-async function startEmittingLocations(elements) {
-    for (const element of elements) {
-        await delay(400);
-        console.log(element);
+async function startEmittingLocations(coordinatesArray) {
+    runner(sendCoordinatesDrone);
+}
+
+
+function* sendCoordinatesDrone () {
+  coordinates = coordinatesArray;
+  var url = "http://" + droneHost + ":" + videoFeedPort + "/setCoordinates"
+  // coordinates.forEach( coordinateObj => {
+    for (var obj in coordinates){
+      const options = {
+        method: 'POST',
+        body: JSON.stringify(coordinates[obj]),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      console.log(url)
+      const response = yield fetch(url , options);
+      const data = yield response.json();
+      const user = data
+      console.log(user);
     }
+  // });
+
 }
 
-async function delay(milliseconds: number) {
-    return new Promise<void>(resolve => {
-        setTimeout(resolve, milliseconds);
-    });
+function runner(genFun){
+	const itr = genFun();
+	function run(arg){
+		const result = itr.next(arg);
+		if(result.done){
+			return result.value;
+		}else{
+			return Promise.resolve(result.value).then(run);
+		}
+	}
+	return run(undefined);
 }
 
-async function sendCoordinatesDrone (coordinates) {
-
-  
-  coordinates.forEach(async coordinateObj => {
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(coordinateObj),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-    const response = await fetch(`/setCoordinates`, options);
-    const user = await response.json();
-    console.log(user);
-  });
-
- 
-}
 
 function sendCoordinatesToUI(coordinates){
     io.emit('locationChanged', coordinates);
@@ -221,3 +234,12 @@ function calculateOffset(simulatedCoordinates){
 /*
 
 */
+
+
+
+
+
+
+
+
+

@@ -1,10 +1,18 @@
 #!/usr/bin/env python
 from flask import Flask, render_template,request,json, Response,send_file
 # from camera import Camera
+import time
+import socket
+mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # import cv2
 # cap = cv2.VideoCapture('android.mp4') 
 app = Flask(__name__)
+# mysocket.connect(('localhost', 3000))
+# mysocket.sendall('Hello, world')
+# data = mysocket.recv(1024)
+# mysocket.close()
+# print 'Received', repr(data)
 
 @app.route('/')
 def index():
@@ -33,6 +41,8 @@ def get_image():
 
 @app.route('/setCoordinates', methods=['POST', 'GET'])
 def setCoordinates():
+    print("request Came")
+    time.sleep(10)
     request.json.update({"message" :"Recieved and Sent from Python"})
     requestBody = json.dumps(request.json)
     return Response(
