@@ -1,0 +1,55 @@
+#droneActionsDiv {
+  padding-top: 10px;
+  color: white;
+  padding-right: 0px;
+}
+
+#actionTitle {
+  font-size: 25px;
+  text-align: center;
+}
+
+#{
+ background: red;
+}
+
+.action-sub-class {
+  margin: 10px 10px 10px 10px;
+  color: white;
+}
+
+.action-sub-class>span {
+  font-size: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.settings-modal {
+  background: #1c2340
+}
+
+.custom-card {
+  background: #0f1b6fd9;
+  margin: 10px;
+}
+
+.settingsDiv {
+  padding-bottom: 20px;
+}
+
+.settingsDiv>.btn {
+  text-align: center;
+  background-color: #aeb625 !important;
+
+}
+
+#updateAlt,
+#updateSpeed {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+#updateAlt>span,
+#updateSpeed>span {
+  padding-right: 20px;
+}

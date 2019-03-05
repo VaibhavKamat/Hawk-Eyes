@@ -1,0 +1,13 @@
+<div *ngIf="drone" id="droneActionsDiv" class="col-md-12">
+ <div id="actionTitle" class="row justify-content-md-center">Actions</div>
+        <div class="col-md-10 offset-md-2">
+            <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3 " (click)="captureImage()">Capture Image</button>
+            <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3" >Settings</button>
+            <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3" (click)="returnToBase()">Return to Base</button>
+         </div> 
+         <div class="col-md-6 offset-md-5">
+           <button id="raiseAlert" type="button" class=" btn btn-lg btn-danger action-sub-class col-md-3  " (click)="Alert()">
+             Alert !
+           </button>
+        </div>
+ </div>

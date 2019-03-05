@@ -1,0 +1,17 @@
+
+<h3 class="titile"> Activity </h3>
+<div class="activity-block">
+  <div  *ngFor="let location of locations" class="row  activity-item ">
+    <div class="col-md-2 activity-icon ">
+        <i class="material-icons">
+            {{location.status}}
+        </i>
+    </div>
+    <div class="col-md-5 activity-title">
+        {{location.location}}
+    </div>
+    <div class="col-md-5 activity-">
+        {{location.time}}
+    </div>
+  </div>
+</div>

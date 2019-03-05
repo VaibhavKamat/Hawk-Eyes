@@ -1,0 +1,24 @@
+<div class="drone-status">
+    <div  class="col-md-12 drone-status">
+        <div class="green-icon"></div><span>Flying</span>
+        </div>
+        </div>  
+<div class="col-md-12 drone-info-section">
+  <div class="col-md-5 info-block">
+  <div class=" drone-info col-md-12">{{drone.locationName}}</div>
+  <div class=" drone-info-sub col-md-12">({{drone.position.latitude}},{{drone.position.longitude}})</div>    
+  </div>
+  <div class="col-md-5 info-block">
+  <div class=" drone-info col-md-12">{{drone.battery}} %</div>
+  <div class=" drone-info-sub col-md-12">{{drone.timeLeft}} hrs appox.</div>    
+  </div>
+  <div class="col-md-5 info-block">
+  <div class=" drone-info col-md-12">{{drone.signal_strength}}</div>
+  <div class=" drone-info-sub col-md-12">Signal Strength</div>    
+  </div>
+  <div class="col-md-5 info-block">
+  <div class=" drone-info col-md-12">{{drone.speed}} Km/H</div>
+  <div class=" drone-info-sub col-md-12">Speed</div>    
+  </div>    
+  <!--<span class=" drone-info col-md-6">{{drone.id}}</span>-->
+  </div>
