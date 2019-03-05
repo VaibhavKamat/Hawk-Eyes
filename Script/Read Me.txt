@@ -1,0 +1,5 @@
+1) Run "run.bat".
+2) Press F to change camera to drone mode
+3) Press E to animate RED CAR
+4) Press F10 to add weather
+5) Press F1 for more Drone related help
