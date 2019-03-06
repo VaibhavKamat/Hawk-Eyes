@@ -8,6 +8,8 @@ import { DroneDetailComponent } from './drone-detail/drone-detail.component';
 import { DroneActionsComponent } from './drone-actions/drone-actions.component';
 import { DroneNavMapComponent } from './drone-nav-map/drone-nav-map.component';
 import { ActivityComponent } from './activity/activity.component';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -17,12 +19,14 @@ import { ActivityComponent } from './activity/activity.component';
     DroneDetailComponent,
     DroneActionsComponent,
     DroneNavMapComponent,
-    ActivityComponent
+    ActivityComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AppRoutingModule,
 
 
   ],

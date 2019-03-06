@@ -10,7 +10,7 @@ import { extendsDirectlyFromObject } from '../../../node_modules/@angular/core/s
 @Component({
   selector: 'app-drone-info',
   templateUrl: './drone-info.component.html',
-  styleUrls: ['./drone-info.component.css']
+  styleUrls: ['./drone-info.component.scss']
 })
 export class DroneInfoComponent implements OnInit {
 
