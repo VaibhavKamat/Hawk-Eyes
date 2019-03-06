@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39fdce15-38f0-47f4-8617-44087c0bae7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Python-Server/learning/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python-Server/core/drone_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/core/drone_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python-Server/video_feed.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/video_feed.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle1.png" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle2.png" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle3.png" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle4.png" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle5.png" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/detected_vehicles/vehicle5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/traffic_measurement.csv" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/traffic_measurement.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/utils/color_recognition_module/test.data" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/utils/color_recognition_module/test.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/utils/speed_and_direction_prediction_module/speed_prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/utils/speed_and_direction_prediction_module/speed_prediction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/utils/visualization_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/utils/visualization_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicle_counting_tensorflow/vehicle_detection_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/vehicle_counting_tensorflow/vehicle_detection_main.py" afterDir="false" />
-    </list>
+    <list default="true" id="39fdce15-38f0-47f4-8617-44087c0bae7d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +88,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="85" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
@@ -195,7 +181,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.2247191" />
