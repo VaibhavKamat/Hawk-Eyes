@@ -42,6 +42,7 @@ def get_image():
 @app.route('/setCoordinates', methods=['POST', 'GET'])
 def setCoordinates():
     print("request Came")
+    print(request.json)
     time.sleep(10)
     request.json.update({"message" :"Recieved and Sent from Python"})
     requestBody = json.dumps(request.json)

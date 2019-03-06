@@ -17,18 +17,136 @@ let droneHost : Function = config.get('droneHost') as Function;
 let videoFeedPort : Number = config.get('videoFeedPort') as Number;
 let locationCounter = 0;
 let coordinatesArray = [
-    {  "x": 100,
-       "y": 400,
-       "z": 100
-     },
-      {  "x": 200,
-       "y": 500,
-       "z": 100
-     },
-      {  "x": 300,
-       "y": 600,
-       "z": 100
-     }];
+  {
+		"id": 2,
+		"args": {
+			"x": 0,
+			"y": 0,
+			"z": 1,
+			"v": 1
+		}
+	},
+	{
+		"id": 4,
+		"args": {
+			"orientation": {
+				"w_val": 1,
+				"x_val": 0,
+				"y_val": 0,
+				"z_val": -0.12
+			}
+		}
+	},
+	{
+		"id": 2,
+		"args": {
+			"x": 6,
+			"y": 0,
+			"z": 1,
+			"v": 1
+		}
+	},
+	{
+		"id": 4,
+		"args": {
+			"orientation": {
+				"w_val": 1,
+				"x_val": 0,
+				"y_val": 0,
+				"z_val": 0.19
+			}
+		}
+	},
+	{
+		"id": 2,
+		"args": {
+			"x": 15,
+			"y": 0,
+			"z": 1,
+			"v": 1
+		}
+	},
+	{
+		"id": 4,
+		"args": {
+			"orientation": {
+				"w_val": 1,
+				"x_val": 0,
+				"y_val": 0,
+				"z_val": 0.21
+			}
+		}
+	},
+	{
+		"id": 2,
+		"args": {
+			"x": 20,
+			"y": 0,
+			"z": 1,
+			"v": 1
+		}
+	},
+	{
+		"id": 4,
+		"args": {
+			"orientation": {
+				"w_val": 1,
+				"x_val": 0,
+				"y_val": 0,
+				"z_val": 0.29
+			}
+		}
+	},
+	{
+		"id": 2,
+		"args": {
+			"x": 25,
+			"y": 0,
+			"z": 1,
+			"v": 1
+		}
+	},
+	{
+		"id": 4,
+		"args": {
+			"orientation": {
+				"w_val": 1,
+				"x_val": 0,
+				"y_val": 0,
+				"z_val": 0.30
+			}
+		}
+	},
+	{
+		"id": 2,
+		"args": {
+			"x": 68,
+			"y": 48,
+			"z": 1,
+			"v": 1
+		}
+	},
+	{
+		"id": 4,
+		"args": {
+			"orientation": {
+				"w_val": 1,
+				"x_val": 0,
+				"y_val": 0,
+				"z_val": 0.7
+			}
+		}
+	},
+	{
+		"id": 2,
+		"args": {
+			"x": 75,
+			"y": 68,
+			"z": 1,
+			"v": 1
+		}
+	}
+];
 export function intiateSocketFlow(){
     io.on('connection', function(socket){
 
@@ -86,10 +204,12 @@ function* sendCoordinatesDrone () {
         }
       };
       console.log(url)
+      console.log(options)
       const response = yield fetch(url , options);
       const data = yield response.json();
       const user = data
       console.log(user);
+      sendCoordinatesToUI(user);
     }
   // });
 
