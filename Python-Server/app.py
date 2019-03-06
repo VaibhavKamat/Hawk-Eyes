@@ -1,10 +1,15 @@
 """
 Starting point of rest application
 """
-import airsim
+import os
+
+import cv2
+import numpy as np
 from flask import Flask, json, request, Response
 
 from core import drone_handler, map
+from vehicle_detection_main import run_detection
+import file_util
 
 command_drone = drone_handler.Instance()
 
@@ -71,6 +76,8 @@ def connection_stat():
     )
 
     return response
+
+
 
 
 if __name__ == '__main__':

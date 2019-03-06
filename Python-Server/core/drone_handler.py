@@ -1,10 +1,12 @@
 import pprint
 
-from airsim.types import Quaternionr
 import airsim
 import cv2
 import numpy as np
+from airsim.types import Quaternionr
+
 from vehicle_detection_main import run_detection
+
 
 class Instance:
     """
@@ -16,6 +18,10 @@ class Instance:
         constructor
         """
         self.__initiate()
+        self.__capturing_image = False
+
+    def is_capturing_image(self):
+        return self.__capturing_image
 
     def __initiate(self):
         """
@@ -64,6 +70,21 @@ class Instance:
         print(x, y, z, v)
         default_yaw_mode = airsim.YawMode(is_rate=False)
         self.client.moveToPositionAsync(x, y, z, v, yaw_mode=default_yaw_mode).join()
+
+    def move_and_change_camera_orientation(self, x, y, z, v, orientation: Quaternionr):
+        """
+        move the drone
+        :param x:
+        :param y:
+        :param z:
+        :param v:
+        :param orientation:
+        :return:
+        """
+        print(x, y, z, v)
+        default_yaw_mode = airsim.YawMode(is_rate=False)
+        self.client.moveToPositionAsync(x, y, z, v, yaw_mode=default_yaw_mode).join()
+        self.set_camera_orientation(orientation)
 
     def land(self):
         """
@@ -119,6 +140,11 @@ class Instance:
         position = self.client.simGetGroundTruthKinematics().position
         return pprint.pformat(position)
 
+    def get_camera_info_and_position(self):
+        response = dict()
+        response["camera"] = self.get_camera_info()
+        response["position"] = self.get_position()
+
     def frame_generator(self, camera_name, image_type):
         idx = 1
         decode_extension = '.jpg'
@@ -127,7 +153,7 @@ class Instance:
 
             if response_image is not None:
                 # print(response_image)
-                np_response_image = np.asarray(bytearray(response_image), dtype="uint8")
+                np_response_image = np.asarray(bytearray(response_image))
                 decoded_frame = cv2.imdecode(np_response_image, cv2.IMREAD_COLOR)
                 ret, encoded_jpeg = cv2.imencode(decode_extension, decoded_frame)
                 frame = encoded_jpeg.tobytes()
@@ -144,13 +170,16 @@ class Instance:
             if frame is not None:
                 np_response_image = np.asarray(bytearray(frame), dtype="uint8")
                 decoded_frame = cv2.imdecode(np_response_image, cv2.IMREAD_COLOR)
-                #ret, encoded_jpeg = cv2.imencode(decode_extension, decoded_frame)
+                # ret, encoded_jpeg = cv2.imencode(decode_extension, decoded_frame)
                 output_frame = run_detection(decoded_frame)
                 ret, encoded_jpeg = cv2.imencode(decode_extension, output_frame)
-                print('is it in?')
                 frame = encoded_jpeg.tobytes()
                 idx = idx + 1
                 yield (b'--frame\r\n'
                        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-
+    def get_frame(self):
+        camera_name = '0'
+        image_type = airsim.ImageType.Scene
+        frame = self.client.simGetImage(camera_name, image_type)
+        return frame

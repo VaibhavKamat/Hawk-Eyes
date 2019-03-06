@@ -34,6 +34,15 @@ def get_command_map(drone: Instance):
                 "code": 200,
                 "value": drone.get_camera_info
             }
+        },
+        5: {
+            "method": drone.move_and_change_camera_orientation,
+            "args": True,
+            "response": {
+                "code": 200,
+                "value": drone.get_camera_info_and_position
+            }
         }
+
     }
     return command_map

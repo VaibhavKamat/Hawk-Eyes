@@ -56,4 +56,25 @@ curl -X POST \
     }
 }'
 
+5) Move drone with Camera orientation
+curl -X POST \
+  http://localhost:5000/command \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 70637687-4c69-46ae-a291-07d9ea2b0216' \
+  -H 'cache-control: no-cache' \
+  -d '{
+    "id": 5,
+    "args": {
+        "x": 35,
+        "y": 1,
+        "z": 0,
+        "v": 3,
+         "orientation": {
+            "w_val": 1,
+            "x_val": 0,
+            "y_val": 0,
+            "z_val": 0.2
+        }
+    }
+}'
 Note: Use only z_value(0 < z_value < 1) for now.
