@@ -4,7 +4,7 @@ import {Drone} from './../classes/drone';
 @Component({
   selector: 'app-drone-nav-map',
   templateUrl: './drone-nav-map.component.html',
-  styleUrls: ['./drone-nav-map.component.css']
+  styleUrls: ['./drone-nav-map.component.scss']
 })
 export class DroneNavMapComponent implements AfterViewInit {
 

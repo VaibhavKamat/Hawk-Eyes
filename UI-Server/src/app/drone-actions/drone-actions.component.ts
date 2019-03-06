@@ -6,7 +6,7 @@ import { ResposeConfigs } from './../classes/responseConfig';
 @Component({
   selector: 'app-drone-actions',
   templateUrl: './drone-actions.component.html',
-  styleUrls: ['./drone-actions.component.css']
+  styleUrls: ['./drone-actions.component.scss']
 })
 export class DroneActionsComponent implements OnInit {
 
