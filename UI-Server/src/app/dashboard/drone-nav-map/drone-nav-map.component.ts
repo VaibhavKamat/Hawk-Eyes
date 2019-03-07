@@ -1,4 +1,4 @@
-import {Component, AfterViewInit, Input} from '@angular/core';
+import {Component, AfterViewInit, Input, OnChanges, SimpleChange} from '@angular/core';
 import {Drone} from './../../classes/drone';
 
 @Component({
@@ -6,7 +6,7 @@ import {Drone} from './../../classes/drone';
   templateUrl: './drone-nav-map.component.html',
   styleUrls: ['./drone-nav-map.component.scss']
 })
-export class DroneNavMapComponent implements AfterViewInit {
+export class DroneNavMapComponent implements AfterViewInit, OnChanges {
 
   @Input()
   drone: Drone;
@@ -41,7 +41,11 @@ export class DroneNavMapComponent implements AfterViewInit {
       self.mockMove(self);
     }, 1000)
 
+    
+  }
 
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+console.log(this.drone);
   }
 
   redraw(): void {
