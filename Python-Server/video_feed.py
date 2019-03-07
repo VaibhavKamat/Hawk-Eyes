@@ -6,8 +6,11 @@ from threat_detection import Detector
 import cv2
 import numpy as np
 from flask import Flask, Response
+import airsim
+from core import drone_handler
 
 detector = Detector()
+video_drone = drone_handler.Instance()
 
 
 def image_processor():
@@ -40,6 +43,16 @@ app = Flask(__name__)
 
 @app.route('/video_feed')
 def video_feed():
+    camera_name = '0'
+    image_type = airsim.ImageType.Scene
+    return Response(
+        video_drone.frame_generator(camera_name, image_type),
+        mimetype='multipart/x-mixed-replace; boundary=frame'
+    )
+
+
+@app.route('/video_feed_ml')
+def video_feed_ml():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(detector.yield_run(), mimetype='multipart/x-mixed-replace; boundary=frame')
 

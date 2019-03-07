@@ -198,6 +198,7 @@ class Detector:
                     output_frame = encoded_jpeg.tobytes()
                     file_util.write_file(os.path.normpath("image_data" + '/image%03d.png' % idx), output_frame)
                     idx = idx + 1
+
     def yield_run(self):
         total_passed_vehicle = 0
         speed = 'waiting...'
@@ -355,9 +356,8 @@ class Detector:
                     # file_util.write_file(os.path.normpath("image_data" + '/image%03d.png' % idx), output_frame)
                     idx = idx + 1
                     yield (b'--frame\r\n'
-                           b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+                           b'Content-Type: image/jpeg\r\n\r\n' + output_frame + b'\r\n\r\n')
 
 
-detector = Detector()
-detector.run()
-
+# detector = Detector()
+# detector.run()
