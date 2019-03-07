@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import {Drone} from './../classes/drone';
-import { DroneService } from './../services/drone-services/drone.service';
-import { ResposeConfigs } from './../classes/responseConfig';
+import {Drone} from './../../classes/drone';
+import { DroneService } from './../../services/drone-services/drone.service';
+import { ResposeConfigs } from './../../classes/responseConfig';
 @Component({
   selector: 'app-drone-actions',
   templateUrl: './drone-actions.component.html',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Drone} from './../classes/drone';
+import {Drone} from './../../classes/drone';
 @Component({
   selector: 'app-drone-detail',
   templateUrl: './drone-detail.component.html',

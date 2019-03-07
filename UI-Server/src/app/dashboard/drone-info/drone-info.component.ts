@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Drone} from './../classes/drone';
-import { DroneService } from './../services/drone-services/drone.service';
-import { AirsimAlertsService } from './../services/airsim-alerts-services/airsim-alerts.service';
+import {Drone} from './../../classes/drone';
+import { DroneService } from './../../services/drone-services/drone.service';
+import { AirsimAlertsService } from './../../services/airsim-alerts-services/airsim-alerts.service';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { droneObjMock } from './../classes/drone-mock';
-import { extendsDirectlyFromObject } from '../../../node_modules/@angular/core/src/render3/jit/directive';
+import { droneObjMock } from './../../classes/drone-mock';
+import { extendsDirectlyFromObject } from '../../../../node_modules/@angular/core/src/render3/jit/directive';
 
 @Component({
   selector: 'app-drone-info',

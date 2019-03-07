@@ -1,7 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { DroneInfoComponent } from './drone-info/drone-info.component';
+import { DroneInfoComponent } from './dashboard/drone-info/drone-info.component';
  
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

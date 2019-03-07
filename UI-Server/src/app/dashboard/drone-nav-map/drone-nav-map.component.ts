@@ -1,5 +1,5 @@
 import {Component, AfterViewInit, Input} from '@angular/core';
-import {Drone} from './../classes/drone';
+import {Drone} from './../../classes/drone';
 
 @Component({
   selector: 'app-drone-nav-map',
@@ -10,22 +10,21 @@ export class DroneNavMapComponent implements AfterViewInit {
 
   @Input()
   drone: Drone;
-  
   constructor() {}
   canvas: any;
   ctx: any;
-  baground_position: number;
+  bagroundPosition: number;
   marker: any;
 
 
   ngAfterViewInit() {
-    this.canvas = document.getElementById("mapCanvas");
-    this.ctx = this.canvas.getContext("2d");
+    this.canvas = document.getElementById('mapCanvas');
+    this.ctx = this.canvas.getContext('2d');
     this.marker = {
       x: 4,
       y: 77,
-      r: 8 
-    }
+      r: 8
+    };
     this.canvas.width = 300;
     this.canvas.height = 300;
 
@@ -42,13 +41,13 @@ export class DroneNavMapComponent implements AfterViewInit {
   }
 
   redraw(): void {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); 
-    this.ctx.beginPath(); //draw the object marker
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.beginPath(); // draw the object marker
     this.ctx.arc(this.marker.x, this.marker.y, this.marker.r, 0, Math.PI * 2);
-    this.ctx.fillStyle = "blue";
+    this.ctx.fillStyle = 'blue';
     this.ctx.fill();
     this.ctx.lineWidth = 3;
-    this.ctx.strokeStyle = "white";
+    this.ctx.strokeStyle = 'white';
     this.ctx.stroke();
     this.ctx.closePath();
   }
