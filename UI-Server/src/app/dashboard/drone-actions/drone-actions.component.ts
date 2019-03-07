@@ -15,18 +15,24 @@ export class DroneActionsComponent implements OnInit {
   }
   @Input() drone: Drone;
   @Output() updateForm = new EventEmitter();
-  droneForm = this.fb.group({
-    speed: [''],
-    altitude: ['']
-});
 
-  ngOnInit() {}
+ settingsObj: any = {
+  speed : 0,
+  altitude : 0
+};
+
+  ngOnInit() {
+
+    this.settingsObj = {
+      speed : this.drone.speed,
+      altitude : this.drone.altitude
+    }
+  }
+
+
   onSubmit() {
-    console.log(this.droneForm.value);
-    this.drone.speed = this.droneForm.value.speed;
-    this.drone.position.latitude = this.droneForm.value.speed;
-    this.drone.position.longitude = this.droneForm.value.speed;
-    this.updateForm.emit(this.drone);
+  console.log(this.settingsObj.speed);
+  this.updateSettings(this.settingsObj.speed, this.settingsObj.altitude);
   }
 
 
@@ -55,6 +61,7 @@ export class DroneActionsComponent implements OnInit {
   }
 
   updateSettings(altitude, speed): void {
+    console.log('updating settings' + speed);
     this.droneService.updateSettings(altitude, speed)
     .subscribe(
       droneData => console.log(droneData),

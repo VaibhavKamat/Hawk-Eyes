@@ -2,12 +2,62 @@
  <div id="actionTitle" class="row justify-content-md-center">Actions</div>
         <div class="col-md-10 offset-md-2">
             <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3 " (click)="captureImage()">Capture Image</button>
-            <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3" >Settings</button>
+            <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3" data-toggle="modal" data-target="#settingsModal">Settings</button>
             <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3" (click)="returnToBase()">Return to Base</button>
          </div> 
          <div class="col-md-6 offset-md-5">
-           <button id="raiseAlert" type="button" class=" btn btn-lg btn-danger action-sub-class col-md-3  " (click)="Alert()">
+           <button id="raiseAlert" type="button" class=" btn btn-lg btn-danger action-sub-class col-md-3  " data-toggle="modal" data-target="#alertsModal" (click)="Alert()">
              Alert !
            </button>
         </div>
  </div>
+ <div class="modal fade" id="settingsModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="settings-modal-title" class="modal-title">Update Settings :</h4>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-12">
+              <label class="modal-label col-md-12">Speed:
+                <input [(ngModel)]="settingsObj.speed" placeholder="speed">
+              </label>
+                <label  class="modal-label col-md-12"> Altitude:
+                    <input [(ngModel)]="settingsObj.altitude" placeholder="altitude">
+              </label>
+              <button type="button" class="btn btn-info" (click)="onSubmit()">submit</button>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="modal fade" id="alertsModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="alert-modal-title" class="modal-title">Alert Options :</h4>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-12">
+            <div class="col-md-4 alert-options">
+                <button type="button" class="btn btn-warning col-md-12">Raise Alarm</button>
+                <button type="button" class="btn btn-info col-md-12">Initiate jammers</button>
+                <button type="button" class="btn btn-success col-md-12">call backup !</button>
+                <button type="button" class="btn btn-danger col-md-12">call shaktimaan</button>
+            </div>
+            <div id="alert-scene" class="col-md-8">
+                <img class="img-responsive" src="../../../assets/alertScene.jpg" />
+
+            </div>
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+    </div>

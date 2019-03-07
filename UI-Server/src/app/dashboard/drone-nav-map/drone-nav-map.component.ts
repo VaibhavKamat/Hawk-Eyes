@@ -10,6 +10,9 @@ export class DroneNavMapComponent implements AfterViewInit {
 
   @Input()
   drone: Drone;
+
+  
+
   constructor() {}
   canvas: any;
   ctx: any;
@@ -37,6 +40,7 @@ export class DroneNavMapComponent implements AfterViewInit {
     setInterval(function () {
       self.mockMove(self);
     }, 1000)
+
 
   }
 
