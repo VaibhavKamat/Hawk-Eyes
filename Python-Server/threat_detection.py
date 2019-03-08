@@ -243,7 +243,7 @@ class Detector:
                                  feed_dict={image_tensor: image_np_expanded})
 
                     # Visualization of the results of a detection.
-                    (counter, csv_line) = \
+                    (counter, csv_line, predicted_speed) = \
                         vis_util.visualize_boxes_and_labels_on_image_array(
                             idx,
                             input_frame,
@@ -256,7 +256,10 @@ class Detector:
                         )
 
                     total_passed_vehicle = total_passed_vehicle + counter
-
+                    print("total_passed_vehicle: ", total_passed_vehicle)
+                    print("predicted_speed: ", predicted_speed)
+                    if predicted_speed > 40:
+                        print("Please write the code for Alarm in the UI", predicted_speed)
                     # insert information text to video frame
                     font = cv2.FONT_HERSHEY_SIMPLEX
                     cv2.putText(
@@ -357,7 +360,6 @@ class Detector:
                     idx = idx + 1
                     yield (b'--frame\r\n'
                            b'Content-Type: image/jpeg\r\n\r\n' + output_frame + b'\r\n\r\n')
-
 
 # detector = Detector()
 # detector.run()
