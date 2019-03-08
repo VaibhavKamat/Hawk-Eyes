@@ -1,10 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# ----------------------------------------------
-# --- Author         : Ahmet Ozlu
-# --- Mail           : ahmetozlu93@gmail.com
-# --- Date           : 31st December 2017 - new year eve :)
-# ----------------------------------------------
 
 from utils.color_recognition_module import color_histogram_feature_extraction
 from utils.color_recognition_module import knn_classifier

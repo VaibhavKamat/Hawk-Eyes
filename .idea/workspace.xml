@@ -160,6 +160,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.app" />
+      <item itemvalue="Python.video_feed" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.video_feed" />
