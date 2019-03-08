@@ -6,9 +6,9 @@ import * as net from 'net'
 var fetch = require('node-fetch');
 const Bluebird = require('bluebird');
 fetch = Bluebird.promisifyAll(fetch);
-var http = require('http');
+var http = require('http').Server(server.server);
 let http2 = require('http').Server(server);
-let io = require('socket.io')(http2);
+let io = require('socket.io')(http);
 let coordinates : {};
 let geoCoordinatesOffset : { "x" : number , "y" : number , "z" : number };
 var geoStartCoordinates = { "x" : 120 , "y" : 110 , "z" : 100 };
@@ -149,8 +149,11 @@ let coordinatesArray = [
 ];
 export function intiateSocketFlow(){
     io.on('connection', function(socket){
-
-        io.emit('locationChanged', coordinates);
+			console.log("client connected")
+			socket.on('uievent', (data) => {
+				console.log('socketData: '+JSON.stringify(data));
+			});
+        io.emit('coordinates', coordinates);
         
     });
     var client = new net.Socket();
@@ -175,17 +178,26 @@ export function intiateSocketFlow(){
     //     });
         
     // }).listen(dronePort, droneHost);
-
-
-    startEmittingLocations(coordinatesArray)
     // console.log('Server listening for drone on ' + droneHost +':'+ dronePort);
    
-    getVideoFeed({},function(data){
-      console.log("video feed Data")
-      console.log(data);
-    })
 }
 
+export function initiateDroneMovement(){
+	startEmittingLocations(coordinatesArray);
+}
+
+export function takeOff(){
+	drone_takeOff(function(response){
+			console.log(response)
+	})
+}
+
+export function getVideoFeedData(){
+	getVideoFeed(function(data){
+		console.log("video feed Data")
+		console.log(data);
+	})
+}
 async function startEmittingLocations(coordinatesArray) {
     runner(sendCoordinatesDrone);
 }
@@ -193,7 +205,7 @@ async function startEmittingLocations(coordinatesArray) {
 
 function* sendCoordinatesDrone () {
   coordinates = coordinatesArray;
-  var url = "http://" + droneHost + ":" + videoFeedPort + "/setCoordinates"
+  var url = "http://" + droneHost + ":" + dronePort + "/command"
   // coordinates.forEach( coordinateObj => {
     for (var obj in coordinates){
       const options = {
@@ -206,8 +218,8 @@ function* sendCoordinatesDrone () {
       console.log(url)
       console.log(options)
       const response = yield fetch(url , options);
-      const data = yield response.json();
-      const user = data
+     const data = yield response.json();
+     const user = data
       console.log(user);
       sendCoordinatesToUI(user);
     }
@@ -230,7 +242,7 @@ function runner(genFun){
 
 
 function sendCoordinatesToUI(coordinates){
-    io.emit('locationChanged', coordinates);
+    io.emit('coordinates', coordinates);
 
 }
 
@@ -249,12 +261,12 @@ function move(coordinates,callback){
      });
 }
 
-function getVideoFeed(inputData,callback){
+function getVideoFeed(callback){
   var options = {
     port : config.get('videoFeedPort') as Number,
-    path : "/get_image"
+    path : "/video_feed"
   }
-  performGetRequest(inputData,options,function(data){
+  performGetRequest({},options,function(data){
     callback(data)
   });
   

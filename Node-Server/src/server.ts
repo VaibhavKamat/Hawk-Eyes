@@ -4,8 +4,8 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as bodyParser from 'body-parser';
 import * as dbUtils from './utils/db-utils';
-import {intiateSocketFlow} from './mainController';
-
+import * as mainController from './mainController';
+const cors = require('cors');
 const SWAGGER_UX_PATH = '/docs';
 const SWAGGER_UX_API_PATH = '/api-docs';
 const DEV_ENDPOINT = 'dev_endpoints';
@@ -25,6 +25,20 @@ app.use(bodyParser.json());
 //   next();
 // });
 
+
+var originsWhitelist = [
+  'http://localhost:4200'
+];
+var corsOptions = {
+  origin: function(origin, callback){
+        var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+        callback(null, isWhitelisted);
+  },
+  credentials:true
+}
+app.use(cors(corsOptions));
+
+
 if (isNaN(port)) {
   console.log(`Invalid port config value: ${port}`);
   process.exit(1);
@@ -33,7 +47,24 @@ if (isNaN(port)) {
 let swaggerPath = path.resolve(__dirname, './swagger.yaml');
 let controllerPath = path.resolve(__dirname, './actions');
 let rootPath = '/hawkeyes/v1';
-intiateSocketFlow();
+app.use("/start",function(req,res){
+  mainController.intiateSocketFlow();
+  res.send()
+})
+app.use("/takeoff",function(req,res){
+  mainController.takeOff();
+  res.send()
+})
+
+app.use("/initiateDroneMovement",function(req,res){
+  mainController.initiateDroneMovement();
+  res.send()
+})
+
+app.use("/getVideoFeed",function(req,res){
+  mainController.getVideoFeedData();
+  res.send();
+})
 
 try {
   initExpress();
