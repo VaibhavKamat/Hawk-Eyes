@@ -16,7 +16,7 @@ def predict_speed(
     crop_img,
     roi_position,
     ):
-    speed = 'n.a.'  # means not available, it is just initialization
+    speed = 0  # means not available, it is just initialization
     direction = 'n.a.'  # means not available, it is just initialization
     scale_constant = 1  # manual scaling because we did not performed camera calibration
     isInROI = True  # is the object that is inside Region Of Interest
