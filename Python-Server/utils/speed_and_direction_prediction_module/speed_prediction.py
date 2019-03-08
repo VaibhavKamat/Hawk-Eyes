@@ -55,6 +55,9 @@ def predict_speed(
     if isInROI:
         
         pixel_length = bottom - bottom_position_of_detected_vehicle[0]
+        #################################################################################################################
+        # We will change this scale to detect near accurate speed, it should probably be more than 44 and there should be a correcting factor for drone speed effect.
+        
         scale_real_length = pixel_length * 44  # multiplied by 44 to convert pixel length to real length in meters (chenge 44 to get length in meters for your case)
         total_time_passed = current_frame_number - current_frame_number_list[0]
         scale_real_time_passed = total_time_passed * 24  # get the elapsed total time for a vehicle to pass through ROI area (24 = fps)
@@ -64,5 +67,10 @@ def predict_speed(
             speed = speed / 6 * 40  # use reference constant to get vehicle speed prediction in kilometer unit
             current_frame_number_list.insert(0, current_frame_number)
             bottom_position_of_detected_vehicle.insert(0, bottom)
+        #################################################################################################################
+        if speed > 40:
+            print("Please write the code for Alarm in the UI"
+        #################################################################################################################
+            
 
     return (direction, speed, is_vehicle_detected, update_csv)

@@ -1,10 +1,10 @@
 """
 Starting point of rest application
 """
-import os
+#import os
 from threat_detection import Detector
-import cv2
-import numpy as np
+#import cv2
+#import numpy as np
 from flask import Flask, Response
 import airsim
 from core import drone_handler
