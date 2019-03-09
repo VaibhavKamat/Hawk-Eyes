@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DroneInfoComponent },
   { path: 'dashboard', component: DroneInfoComponent },
   { path: 'analytics', component: SummaryComponent },
-  { path: 'map', component: MapComponent }
+  { path: 'set-destination', component: MapComponent }
 ];
  
 @NgModule({
