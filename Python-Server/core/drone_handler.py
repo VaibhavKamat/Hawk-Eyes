@@ -67,6 +67,7 @@ class Instance:
         :param v:
         :return:
         """
+        print("in move")
         print(x, y, z, v)
         default_yaw_mode = airsim.YawMode(is_rate=False)
         self.client.moveToPositionAsync(x, y, z, v, yaw_mode=default_yaw_mode).join()

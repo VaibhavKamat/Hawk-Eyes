@@ -2,8 +2,8 @@
 from flask import Flask, render_template,request,json, Response,send_file
 # from camera import Camera
 import time
-import socket
-mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# import socket
+# mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # import cv2
 # cap = cv2.VideoCapture('android.mp4') 
@@ -32,6 +32,19 @@ def video_feed():
     return Response(gen(),
         mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/takeoff')
+def takeoff():
+    print("request Came")
+    print(request.json)
+    time.sleep(10)
+    request.json.update({"message" :"Recieved and Sent from Python"})
+    requestBody = json.dumps(request.json)
+    return Response(
+        response= requestBody,
+        status=200,
+        mimetype='application/json'
+    )
+
 
 @app.route('/get_image')
 def get_image():
@@ -39,7 +52,7 @@ def get_image():
     return send_file(filename, mimetype='image/jpeg')
 
 
-@app.route('/setCoordinates', methods=['POST', 'GET'])
+@app.route('/command', methods=['POST', 'GET'])
 def setCoordinates():
     print("request Came")
     print(request.json)
@@ -54,4 +67,4 @@ def setCoordinates():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=5001)
+    app.run(host='0.0.0.0', debug=True, port=5000)

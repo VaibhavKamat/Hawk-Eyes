@@ -59,8 +59,8 @@ ngOnInit() {
   }
 
   createAirsimAlertSocket(): void {
-    this.airsimSocketData = this.airsimAlertsService.connect()
-             .pipe(map( (response: any): any => response )) as Subject<any>;
+    // this.airsimSocketData = this.airsimAlertsService.connect()
+    //          .pipe(map( (response: any): any => response )) as Subject<any>;
   }
 
 
