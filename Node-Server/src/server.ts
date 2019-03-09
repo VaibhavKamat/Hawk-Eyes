@@ -94,8 +94,10 @@ app.use("/start",function(req,res){
   res.send()
 })
 app.use("/takeoff",function(req,res){
-  mainController.takeOff(function(resp){
-    res.send(resp);
+  console.log("in take off")
+  
+  mainController.drone_takeOff(function(resp){
+    res.send();
   });
 })
 
@@ -103,7 +105,7 @@ app.use("/resetDronePosition",function(req,res){
     
   mainController.resetDronePosition(function(response){
     console.log(response)
-    res.send(response);
+    res.send();
   })
 });
 
