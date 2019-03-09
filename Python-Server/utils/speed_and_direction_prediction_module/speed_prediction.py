@@ -24,15 +24,15 @@ def predict_speed(
 
     if bottom < 100:
         scale_constant = 1  # scale_constant is used for manual scaling because we did not performed camera calibration
-    elif bottom > 100 and bottom < 350:
+    elif bottom > 100 and bottom < 400:
         scale_constant = 2  # scale_constant is used for manual scaling because we did not performed camera calibration
     else:
         isInROI = False
 
     if len(bottom_position_of_detected_vehicle) != 0 and bottom \
-            - bottom_position_of_detected_vehicle[0] > 0 and 230 \
+            - bottom_position_of_detected_vehicle[0] > 0 and 170 \
             < bottom_position_of_detected_vehicle[0] \
-            and bottom_position_of_detected_vehicle[0] < 350 \
+            and bottom_position_of_detected_vehicle[0] < 520 \
             and roi_position < bottom:
         # print('contrue')
         is_vehicle_detected.insert(0, 1)
@@ -53,7 +53,7 @@ def predict_speed(
         #################################################################################################################
         # We will change this scale to detect near accurate speed, it should probably be more than 44 and there should be a correcting factor for drone speed effect.
         
-        scale_real_length = pixel_length * 44  # multiplied by 44 to convert pixel length to real length in meters (chenge 44 to get length in meters for your case)
+        scale_real_length = (pixel_length * 44) # multiplied by 44 to convert pixel length to real length in meters (chenge 44 to get length in meters for your case)
         total_time_passed = current_frame_number - current_frame_number_list[0]
         scale_real_time_passed = total_time_passed * 24  # get the elapsed total time for a vehicle to pass through ROI area (24 = fps)
         print(scale_real_time_passed)
