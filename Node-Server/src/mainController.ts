@@ -6,9 +6,8 @@ import * as net from 'net'
 var fetch = require('node-fetch');
 const Bluebird = require('bluebird');
 fetch = Bluebird.promisifyAll(fetch);
-var http = require('http').Server(server.server);
-let io = require('socket.io')(http);
-let coordinates: {};
+var http = require('http');
+let lastResponse: {};
 let geoCoordinatesOffset: { "x": number, "y": number, "z": number };
 var geoStartCoordinates = { "x": 120, "y": 110, "z": 100 };
 let dronePort: Number = config.get('dronePort') as Number;
@@ -133,7 +132,7 @@ let coordinatesArray = [
 				"w_val": 1,
 				"x_val": 0,
 				"y_val": 0,
-				"z_val": 0.7
+				"z_val": 0.31
 			}
 		}
 	},
@@ -203,31 +202,30 @@ async function startEmittingLocations(coordinatesArray) {
 	runner(sendCoordinatesDrone);
 }
 
-
 function* sendCoordinatesDrone() {
-	coordinates = coordinatesArray;
 	var url = "http://" + droneHost + ":" + dronePort + "/command"
+	var self = this;
 	// coordinates.forEach( coordinateObj => {
-	for (var obj in coordinates) {
+	for (var obj in coordinatesArray) {
 		const options = {
 			method: 'POST',
-			body: JSON.stringify(coordinates[obj]),
+			body: JSON.stringify(coordinatesArray[obj]),
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		};
-		console.log(url)
-		console.log(options)
-		const response = yield fetch(url, options);
-		const data = yield response.json();
-		let user = data
-		console.log(user);
-
-		user.replace("<Vector3r> ","");
-		data.replace(/'/g,'"');
-
-		user = JSON.parse(user);
-		sendCoordinatesToUI(user, null);
+		try {
+			const response = yield fetch(url, options);
+			const data = yield response.json();
+			
+			let pythonResponse = JSON.parse(data)
+			lastResponse = data;
+			if(pythonResponse instanceof Object){
+				sendCoordinatesToUI(pythonResponse,null);
+			}
+		}catch(e){
+				console.log(e)
+		}
 	}
 	// });
 
@@ -246,21 +244,30 @@ function runner(genFun) {
 	return run(undefined);
 }
 
+function threatDetected(alertData,socket){
+	socketServer = socket;
+	sendCoordinatesToUI(undefined,alertData);
+}
 
 function sendCoordinatesToUI(coordinates, alertData) {
 
-
+	var tempCoordinates
 	let LEVELS = ["success", "danger", "warning"];
 
-
+	if(!coordinates){
+		tempCoordinates = lastResponse
+	}else{
+		tempCoordinates = coordinates
+	}
+	console.log(tempCoordinates);
 	let drone  = {
     id: "A0123G",
     name: "Drone AR",
     battery: 78,
     locationName: "",
     position: {
-			latitude: coordinates.x_val,
-    	longitude: coordinates.y_val
+			latitude: tempCoordinates.x,
+    	longitude: tempCoordinates.y
 		},
     flightStatus: "Online",
     speed: 17,
@@ -284,9 +291,24 @@ function sendCoordinatesToUI(coordinates, alertData) {
 // }
 // coordinates = {x_val: 0, y_val: 0, z_val: 1.0000747442245483}
 
-	console.log(drone);
+	if(drone && drone.position){
+		socketServer.emit('droneUpdate', drone);
+	}
+}
 
-	socketServer.emit('droneUpdate', drone);
+
+export function resetDronePosition(callback){
+	var data =  {
+		"id": 2,
+		"args": {
+			"x": 0,
+			"y": 0,
+			"z": 1,
+			"v": 12
+    }}
+	performPostRequest(data, function (response) {
+		callback(response)
+	});
 
 }
 
@@ -321,7 +343,7 @@ function performPostRequest(data, callback) {
 	let post_data = JSON.stringify(data);
 
 	var options = {
-		host: 'localhost',
+		host: droneHost,
 		port: 5000,
 		path: '/command',
 		method: 'POST',
@@ -355,7 +377,7 @@ function performPostRequest(data, callback) {
 function performGetRequest(data, newOptions, callback) {
 
 	var options = {
-		host: 'localhost',
+		host:  droneHost,
 		port: 5000,
 		encoding: null,
 		path: '/command',

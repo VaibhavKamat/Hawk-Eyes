@@ -4,8 +4,10 @@ import airsim
 import cv2
 import numpy as np
 from airsim.types import Quaternionr
+import numpy as np
 
 from vehicle_detection_main import run_detection
+import json
 
 
 class Instance:
@@ -125,7 +127,8 @@ class Instance:
         :return:
         """
         state = self.client.getMultirotorState()
-        return pprint.pformat(state)
+        return json.dumps(state)
+        #return pprint.pformat(state)
 
     def set_camera_orientation(self, orientation: Quaternionr):
         """
@@ -135,11 +138,16 @@ class Instance:
         self.client.simSetCameraOrientation(airsim.ImageType.Scene, orientation)
 
     def get_camera_info(self):
-        return pprint.pformat(self.client.getCameraInfo(airsim.ImageType.Scene))
+        return json.dumps(self.client.getCameraInfo(airsim.ImageType.Scene))
+        #return pprint.pformat(self.client.getCameraInfo(airsim.ImageType.Scene))
 
     def get_position(self):
         position = self.client.simGetGroundTruthKinematics().position
-        return pprint.pformat(position)
+        pos = dict()
+        pos['x'] = position.x_val
+        pos['y'] = position.y_val
+        pos['z'] = position.z_val
+        return json.dumps(pos)
 
     def get_camera_info_and_position(self):
         response = dict()

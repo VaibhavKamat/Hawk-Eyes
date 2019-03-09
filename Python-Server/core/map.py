@@ -1,5 +1,6 @@
 from core.drone_handler import Instance
-
+def return_true():
+    return True
 
 def get_command_map(drone: Instance):
     command_map = {
@@ -32,7 +33,7 @@ def get_command_map(drone: Instance):
             "args": True,
             "response": {
                 "code": 200,
-                "value": drone.get_camera_info
+                "value": return_true
             }
         },
         5: {
@@ -40,7 +41,7 @@ def get_command_map(drone: Instance):
             "args": True,
             "response": {
                 "code": 200,
-                "value": drone.get_camera_info_and_position
+                "value": return_true
             }
         }
 

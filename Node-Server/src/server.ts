@@ -32,7 +32,8 @@ app.use(bodyParser.json());
 
 
 var originsWhitelist = [
-  'http://localhost:4200'
+  'http://localhost:4200',
+  'http://10.244.25.137:4200'
 ];
 var corsOptions = {
   origin: function(origin, callback){
@@ -97,6 +98,13 @@ app.use("/takeoff",function(req,res){
   mainController.takeOff();
   res.send()
 })
+
+app.use("/resetDronePosition",function(req,res){
+    res.send();
+  mainController.resetDronePosition(function(response){
+    console.log(response)
+  })
+});
 
 app.use("/initiateDroneMovement",function(req,res){
   mainController.initiateDroneMovement(io);

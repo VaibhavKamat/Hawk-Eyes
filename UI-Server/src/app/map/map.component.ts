@@ -21,6 +21,7 @@ export class MapComponent implements AfterViewInit {
     {x:295,y:640},
     {x:290,y:600},  
     {x:278,y:516},
+    {x:262,y:394},
     {x:255,y:340},
     {x:255,y:330},
     {x:255,y:320},
@@ -63,25 +64,6 @@ export class MapComponent implements AfterViewInit {
     this.ctx.strokeStyle = 'white';
     this.ctx.stroke();
     this.ctx.closePath();
-
-
-
-
-  //   setInterval(() =>{
-  //     amount += 0.01;        
-  //     this.path.moveTo(startX, startY);
-  //     this.path.lineTo(startX + (endX - startX) * amount, startY + (endY - startY) * amount);
-  //     this.path.stroke();
-  // }, 30);
-
-    // setInterval(() =>{
-    //     amount += 0.01;  
-    //     this.ctx.beginPath();      
-    //     this.path.strokeStyle = "blue";
-    //     this.path.moveTo(startX, startY);
-    //     this.path.lineTo(startX + (endX - startX) * amount, startY + (endY - startY) * amount);
-    //     this.path.stroke();
-    // }, 30);
   }
 
   move(x, y): void {
@@ -137,8 +119,7 @@ showPath() {
     var ctx = this.ctx;;
   
     (function (i) {      
-      setTimeout(() => {
-        console.log("wudfajsghsjhdgajshdjhasjj",i);
+      setTimeout(() => {        
         ctx.beginPath();  
         ctx.strokeStyle = "#6382f2";
         ctx.lineWidth = 8;     
