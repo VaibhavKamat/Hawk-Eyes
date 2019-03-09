@@ -10,3 +10,63 @@
 .drone-card-body{
     padding:10px;
 }
+
+
+.default-bg{
+    background-color: var(--bg);
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.online-dot:before {
+    content: ' \25CF';
+    font-size: 2rem;
+    color: var(--online);
+  }
+
+  .standby-dot:before {
+    content: ' \25CF';
+    font-size: 2rem;
+    color: var(--standby);
+  }
+
+  .offline-dot:before {
+    content: ' \25CF';
+    font-size: 2rem;
+    color: var(--offline);
+  }
+
+  .text-black{
+      color: var(--text-black);
+  }
+
+  .battery-color{
+      color: var(--battery-color);
+  }
+
+  .signal-color{
+      color:  var(--signal-color);
+  }
+
+  .location-color{
+    color:  var(--location-color);
+}
+
+
+.dimmed {
+    position: relative;
+  }
+  
+  .dimmed:after {
+    content: " ";
+    z-index: 10;
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }

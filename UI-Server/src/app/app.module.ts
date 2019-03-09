@@ -10,6 +10,8 @@ import { DroneNavMapComponent } from './dashboard/drone-nav-map/drone-nav-map.co
 import { ActivityComponent } from './dashboard/drone-activity/activity.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DroneConfigComponent } from './drone-config/drone-config.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { AppRoutingModule } from './app-routing.module';
     DroneActionsComponent,
     DroneNavMapComponent,
     ActivityComponent,
-    HomeComponent
+    HomeComponent,
+    DroneConfigComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
