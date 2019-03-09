@@ -17,7 +17,7 @@ export class DroneService {
 
 
   private requestUri = {
-    webnodeSocket: 'http://localhost:5000',
+    webnodeSocket: 'http://localhost:3000',
     getData: 'http://localhost:5000/data',
     captureImg: 'http://localhost:5000/capture',
     updateSettings: 'http://localhost:5000/update',
@@ -72,7 +72,7 @@ connect(): Subject<MessageEvent> {
   this.nodeSocket = io(this.requestUri.webnodeSocket);
 
   const droneObservable = new Observable(observerD => {
-    this.nodeSocket.on('droneUpdate', (data) => {
+    this.nodeSocket.on('coordinates', (data) => {
       observerD.next(data);
     });
     return () => this.nodeSocket.disconnect();

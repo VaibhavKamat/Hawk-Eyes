@@ -10,7 +10,8 @@ import { DroneNavMapComponent } from './dashboard/drone-nav-map/drone-nav-map.co
 import { ActivityComponent } from './dashboard/drone-activity/activity.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io'
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -27,8 +28,8 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
-
+    FormsModule,
+    SocketIoModule.forRoot(config)
 
   ],
   providers: [],

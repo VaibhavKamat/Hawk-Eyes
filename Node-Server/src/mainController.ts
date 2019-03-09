@@ -15,6 +15,7 @@ let dronePort: Number = config.get('dronePort') as Number;
 let droneHost: Function = config.get('droneHost') as Function;
 let videoFeedPort: Number = config.get('videoFeedPort') as Number;
 let locationCounter = 0;
+var socketServer;
 let coordinatesArray = [
 	{
 		"id": 2,
@@ -147,14 +148,14 @@ let coordinatesArray = [
 	}
 ];
 export function intiateSocketFlow() {
-	io.on('connection', function (socket) {
-		console.log("client connected")
-		socket.on('uievent', (data) => {
-			console.log('socketData: ' + JSON.stringify(data));
-		});
-		io.emit('coordinates', coordinates);
+	// io.on('connection', function (socket) {
+	// 	console.log("client connected")
+	// 	socket.on('uievent', (data) => {
+	// 		console.log('socketData: ' + JSON.stringify(data));
+	// 	});
+	// 	io.emit('coordinates', coordinates);
 
-	});
+	// });
 	var client = new net.Socket();
 
 	// client.connect(50000,"localhost",function(){
@@ -181,7 +182,8 @@ export function intiateSocketFlow() {
 
 }
 
-export function initiateDroneMovement() {
+export function initiateDroneMovement(socket) {
+	socketServer = socket;
 	startEmittingLocations(coordinatesArray);
 }
 
@@ -241,7 +243,7 @@ function runner(genFun) {
 
 
 function sendCoordinatesToUI(coordinates) {
-	io.emit('coordinates', coordinates);
+	socketServer.emit('droneUpdate', coordinates);
 
 }
 
