@@ -14,6 +14,8 @@ import { DroneConfigComponent } from './drone-config/drone-config.component';
 import { HeaderComponent } from './header/header.component';
 import { SummaryComponent } from './analytics/summary/summary.component';
 import { MapComponent } from './map/map.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
+import { AnalyticsGraphsComponent } from './analytics/analytics-graphs/analytics-graphs.component';
 
 @NgModule({
   declarations: [
@@ -27,15 +29,16 @@ import { MapComponent } from './map/map.component';
     DroneConfigComponent,
     HeaderComponent, 
     SummaryComponent,
-    MapComponent
+    MapComponent,
+	AnalyticsGraphsComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
-
+    FormsModule,
+	NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
