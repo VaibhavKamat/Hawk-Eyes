@@ -33,7 +33,8 @@ app.use(bodyParser.json());
 
 var originsWhitelist = [
   'http://localhost:4200',
-  'http://10.244.25.137:4200'
+  'http://10.244.25.137:4200',
+  'http://10.244.25.15:4200'
 ];
 var corsOptions = {
   origin: function(origin, callback){
@@ -65,8 +66,8 @@ const droneObj= {
   upTime: 50,
   altitude: 25,
   position: {
-      latitude: 100.1,
-      longitude: 100.1,
+      latitude: 0,
+      longitude: 0,
   }
  };
 
@@ -77,13 +78,11 @@ io.on('connection', (socket) => {
   socket.on('coordinates', (data) => {
     console.log('socketData: '+JSON.stringify(data));
   });
-  io.on('threatAlert', function(data ){
 
+  socket.on('threatAlert', (data) => {
     console.log("threat detected ..");
     console.log(data);
-
-    // mainController.sendCoordinatesToUI(coordinates,data);
-
+    mainController.threatDetected(data,socket);
   });
 
   io.emit("droneUpdate", { type: "new-message",  'droneObj' :  droneObj });
@@ -95,14 +94,16 @@ app.use("/start",function(req,res){
   res.send()
 })
 app.use("/takeoff",function(req,res){
-  mainController.takeOff();
-  res.send()
+  mainController.takeOff(function(resp){
+    res.send(resp);
+  });
 })
 
 app.use("/resetDronePosition",function(req,res){
-    res.send();
+    
   mainController.resetDronePosition(function(response){
     console.log(response)
+    res.send(response);
   })
 });
 

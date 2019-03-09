@@ -15,6 +15,7 @@ from utils import visualization_utils as vis_util
 from sockets.client import SocketClient
 import socketio
 
+connectString = 'http://localhost:3000'
 MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
 MODEL_FILE = MODEL_NAME + '.tar.gz'
 DOWNLOAD_BASE = \
@@ -213,9 +214,17 @@ class Detector:
                     ret, encoded_jpeg = cv2.imencode(decode_extension, input_frame)
                     output_frame = encoded_jpeg.tobytes()
                     if predicted_speed > 40 and predicted_speed < 100:
+                        position = self.video_feed_drone.get_position()
+                        msg["location"] = position
+                        msg["data"] = output_frame
+                        threat = {
+                            'message': "Threat detected",
+                            'level' : "High"
+                        }
+                        msg["threat"] = threat
                         print("Please write the code for Alarm in the UI", predicted_speed)
                         threatObject = msg
-                        sio.connect('http://localhost:3000')
+                        sio.connect(connectString)
 
                     else:
                         msg["Threat"] = False

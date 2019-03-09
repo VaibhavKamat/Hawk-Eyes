@@ -2,17 +2,22 @@
 from flask import Flask, render_template,request,json, Response,send_file
 # from camera import Camera
 import time
-# import socket
-# mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+import socketio
 
 # import cv2
 # cap = cv2.VideoCapture('android.mp4') 
 app = Flask(__name__)
-# mysocket.connect(('localhost', 3000))
-# mysocket.sendall('Hello, world')
-# data = mysocket.recv(1024)
-# mysocket.close()
-# print 'Received', repr(data)
+
+sio = socketio.Client()
+
+
+@sio.on('connect')
+def on_connect():
+    sio.emit('threatAlert',{"threat":{"level": "danger","message": "threat detected!!!!"},"location":{"x": 15,"y": 0,"z": 1,"v": 1}})
+    sio.disconnect()
+
+sio.connect('http://localhost:3000')
+
 
 @app.route('/')
 def index():
@@ -56,8 +61,7 @@ def get_image():
 def setCoordinates():
     print("request Came")
     print(request.json)
-    time.sleep(10)
-    request.json.update({"message" :"Recieved and Sent from Python"})
+    time.sleep(5)
     requestBody = json.dumps(request.json)
     return Response(
         response= requestBody,
