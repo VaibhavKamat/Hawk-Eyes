@@ -32,7 +32,7 @@ sio = socketio.Client()
 
 
 class Detector:
-    threatObject = {}
+    cls.threatObject = {}
 
     @sio.on('connect')
     def on_connect():
@@ -223,7 +223,7 @@ class Detector:
                         }
                         msg["threat"] = threat
                         print("Please write the code for Alarm in the UI", predicted_speed)
-                        threatObject = msg
+                        cls.threatObject = msg
                         sio.connect(connectString)
 
                     else:

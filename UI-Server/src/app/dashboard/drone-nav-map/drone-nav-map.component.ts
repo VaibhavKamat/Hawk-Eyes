@@ -115,7 +115,7 @@ export class DroneNavMapComponent implements AfterViewInit, OnChanges {
 
   moveDrone(self,x,y): void { 
     var decimal = Math.random();
-    var radius = 6 + Math.floor(Math.random() * Math.floor(3));
+    var radius = 6 + Math.floor(Math.random() * Math.floor(2));
     self.marker.x = x; 
     self.marker.y = y;
     self.marker.r = radius;
