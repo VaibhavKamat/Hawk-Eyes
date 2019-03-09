@@ -2,7 +2,42 @@
     height: 80%;
     width: 80%;
   }
+.summaryDiv{
+    display:inline-flex;
+    background-color: #1c2340;
+}
+  .specificSummary, .overallSummary{
+      display: flex;
+width: 35%;
+background-color: #1c2340;
+color:white;
+border: 2px solid black;
+}
 
-  .specificSummary, .summaryImg, .overallSummary{
-display: inline-flex;
+  .specificSummary li, .overallSummary li{
+    background-color: #1c2340;
+    color:white;
+  }
+
+  .specificSummary{
+      border-left: 0px solid;
+  }
+
+  .summaryImg{
+      width: 30%;
+      text-align: center;
+      border: 2px solid black;
+      border-right: 0px solid;
+      border-left: 0px solid;
+  }
+  #threatImg{
+      margin-top: 15px;
+      width:90%;
+      height:90%;
+  }
+  #summaryTitle{
+      background-color: #1c2340;
+      font-size:25px;
+color:white;
+text-align: center;
   }
