@@ -3,15 +3,9 @@ import { Drone } from './../../classes/drone';
 import { droneObjMock } from 'src/app/classes/drone-mock';
 
 @Component({
-  selectothreatObj !== null'{
-  console.log("threat detected");
-  },
-  templatethreatObj !== null.{
-  console.log("threat detected");
-  }component.html',
-  styleUrthreatObj !== null.{
-  console.log("threat detected");
-  }component.scss']
+  selector: 'app-activity',
+  templateUrl: './activity.component.html',
+  styleUrls: ['./activity.component.scss']
 })
 export class ActivityComponent implements OnInit, OnChanges {
 private drone: Drone;
@@ -22,8 +16,7 @@ private drone: Drone;
 
   tempList: any[] = [];
   activityList: any[] = [];
-  activitySize = 5;
-  activityCount = 0;
+
 
 
 
@@ -46,7 +39,7 @@ private drone: Drone;
     let tempList2: any[] = [];
     this.tempList.push({
     locationInfo: droneObj.locationName,
-    timeData: this.tempList.length-1
+    timeData: 50 - this.tempList.length
     })
     
     if(this.tempList.length > 5)
