@@ -10,9 +10,9 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-                "styleext": "scss"       
-          }  
-  },
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -27,9 +27,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss","node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.min.js","node_modules/bootstrap/dist/js/bootstrap.min.js"],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -86,7 +90,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "../node_modules/jquery/dist/jquery.min.js",
+              "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

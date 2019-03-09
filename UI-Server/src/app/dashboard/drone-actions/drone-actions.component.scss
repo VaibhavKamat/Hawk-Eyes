@@ -39,6 +39,9 @@
   margin: 10px;
 }
 
+.modal-backdrop{
+  background-color: red;
+}
 .settingsDiv {
   padding-bottom: 20px;
 }
@@ -67,6 +70,18 @@
 
 #alert-scene{
   display: inline-flex;
+ 
+}
+
+
+#alert-scene > img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.finalOptions{
+  text-align:center;
+  margin-top:15px;
 }
 .alert-options{
   display: inline-block;
@@ -94,4 +109,8 @@
 .alertOptions{
   margin-left: 25px;
   width: 20%
+}
+
+#alertsModal{
+width:80%;
 }

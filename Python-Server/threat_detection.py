@@ -30,7 +30,8 @@ NUM_CLASSES = 90
 
 class Detector:
     def __init__(self):
-        self.client_socket = SocketClient(socket.gethostname(), 5000)
+        # ip = "10.244.25.16"
+        self.client_socket = SocketClient(socket.gethostname(), 5010)
         file_util.delete_all_files(os.path.normpath("image_data"))
         self.video_feed_drone = drone_handler.Instance()
         self.detection_graph = tf.Graph()
@@ -69,6 +70,7 @@ class Detector:
                 num_detections = self.detection_graph.get_tensor_by_name('num_detections:0')
                 decode_extension = '.jpg'
                 idx = 1
+                var = True
                 while True:
                     frame = self.video_feed_drone.get_frame()
                     np_response_image = np.asarray(bytearray(frame), dtype="uint8")
@@ -107,16 +109,16 @@ class Detector:
 
                     # insert information text to video frame
                     font = cv2.FONT_HERSHEY_SIMPLEX
-                    cv2.putText(
-                        input_frame,
-                        'Detected Vehicles: ' + str(total_passed_vehicle),
-                        (10, 35),
-                        font,
-                        0.8,
-                        (0, 0xFF, 0xFF),
-                        2,
-                        cv2.FONT_HERSHEY_SIMPLEX,
-                    )
+                    # cv2.putText(
+                    #     input_frame,
+                    #     'Detected Vehicles: ' + str(total_passed_vehicle),
+                    #     (10, 35),
+                    #     font,
+                    #     0.8,
+                    #     (0, 0xFF, 0xFF),
+                    #     2,
+                    #     cv2.FONT_HERSHEY_SIMPLEX,
+                    # )
 
                     # when the vehicle passed over line and counted, make the color of ROI line green
                     if counter == 1:
@@ -166,7 +168,7 @@ class Detector:
                         1,
                         cv2.FONT_HERSHEY_COMPLEX_SMALL,
                     )
-                    cv2.putText(
+                    '''cv2.putText(
                         input_frame,
                         '-Color: ' + color,
                         (14, 322),
@@ -175,7 +177,7 @@ class Detector:
                         (0xFF, 0xFF, 0xFF),
                         1,
                         cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                    )
+                    )'''
                     cv2.putText(
                         input_frame,
                         '-Vehicle Size/Type: ' + size,
@@ -187,7 +189,7 @@ class Detector:
                         cv2.FONT_HERSHEY_COMPLEX_SMALL,
                     )
 
-                    cv2.imshow('vehicle detection', input_frame)
+                    # cv2.imshow('vehicle detection', input_frame)
 
                     if cv2.waitKey(1) & 0xFF == ord('q'):
                         break
@@ -202,15 +204,16 @@ class Detector:
                     ret, encoded_jpeg = cv2.imencode(decode_extension, input_frame)
                     output_frame = encoded_jpeg.tobytes()
                     msg["frame_id"] = idx
-                    if predicted_speed > 40:
+                    msg["output_frame"] = output_frame
+                    if predicted_speed > 40 and predicted_speed < 200:
                         print("Please write the code for Alarm in the UI", predicted_speed)
                         msg["Threat"] = True
 
                     else:
                         msg["Threat"] = False
-                    message = msg.__str__()
-                    print(message)
-                    self.client_socket.send(message)
+
+                    print(msg)
+                    self.client_socket.send(msg)
                     # file_util.write_file(os.path.normpath("image_data" + '/image%03d.png' % idx), output_frame)
                     idx = idx + 1
                     yield (b'--frame\r\n'

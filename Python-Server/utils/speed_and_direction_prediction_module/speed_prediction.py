@@ -24,15 +24,15 @@ def predict_speed(
 
     if bottom < 100:
         scale_constant = 1  # scale_constant is used for manual scaling because we did not performed camera calibration
-    elif bottom > 100 and bottom < 320:
+    elif bottom > 100 and bottom < 350:
         scale_constant = 2  # scale_constant is used for manual scaling because we did not performed camera calibration
     else:
         isInROI = False
 
     if len(bottom_position_of_detected_vehicle) != 0 and bottom \
-            - bottom_position_of_detected_vehicle[0] > 0 and 270 \
+            - bottom_position_of_detected_vehicle[0] > 0 and 230 \
             < bottom_position_of_detected_vehicle[0] \
-            and bottom_position_of_detected_vehicle[0] < 275 \
+            and bottom_position_of_detected_vehicle[0] < 350 \
             and roi_position < bottom:
         # print('contrue')
         is_vehicle_detected.insert(0, 1)
