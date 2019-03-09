@@ -30,23 +30,27 @@ private drone: Drone;
     const changeData: SimpleChange = changes.item;
     console.log("yeyeye");
     this.updateActivityList(this.drone);
-    if(Object(this.drone.threatObj).keys.length !== -1)
-    {
-      console.log("threat");
-    }
+
   }
 
   updateActivityList(droneObj): void {
     console.log('updated');
+
     this.tempList.push({
     locationInfo: droneObj.locationName,
     timeData: new Date()
-  });
-
-    this.tempList = this.tempList.slice(this.activityList.length - 5);
+    })
     this.tempList = this.tempList.reverse();
+    if(this.tempList.length > 5)
+    this.tempList = this.tempList.slice(5);
+    //this.tempList = this.tempList.reverse();
+
     this.activityList = this.tempList;
 }
+
+
+
+
 
 
  

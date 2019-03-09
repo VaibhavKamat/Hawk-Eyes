@@ -17,7 +17,7 @@ export class DroneService {
 
 
   private requestUri = {
-    webnodeSocket: 'http://192.168.99.1:3000',
+    webnodeSocket: 'http://localhost:3000',
     getData: 'http://localhost:5000/data',
     captureImg: 'http://localhost:5000/capture',
     updateSettings: 'http://localhost:5000/update',
