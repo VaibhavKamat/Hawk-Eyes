@@ -70,7 +70,7 @@ const droneObj= {
   }
  };
 
- let locations = ["Anantnag","Badgam",	"Bandipore",	"Baramula",	"Doda",	"Ganderbal",	"Jammu",	"Kargil"];
+
 io.on('connection', (socket) => {
   console.log("Connected to Socket!!"+ socket.id);
   // Receiving Todos from client

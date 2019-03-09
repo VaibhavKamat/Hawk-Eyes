@@ -117,6 +117,15 @@ let coordinatesArray = [
 		}
 	},
 	{
+    "id": 2,
+    "args": {
+        "x": 36,
+        "y": 11,
+        "z": 1,
+        "v": 1
+    }
+},
+	{
 		"id": 2,
 		"args": {
 			"x": 68,
@@ -146,6 +155,8 @@ let coordinatesArray = [
 		}
 	}
 ];
+
+let locations = ["Anantnag","Badgam",	"Bandipore",	"Baramula",	"Doda",	"Ganderbal",	"Jammu",	"Kargil"];
 export function intiateSocketFlow() {
 	// io.on('connection', function (socket) {
 	// 	console.log("client connected")
@@ -264,7 +275,7 @@ function sendCoordinatesToUI(coordinates, alertData) {
     id: "A0123G",
     name: "Drone AR",
     battery: 78,
-    locationName: "",
+    locationName: locations.pop(),
     position: {
 			latitude: tempCoordinates.x,
     	longitude: tempCoordinates.y
@@ -291,6 +302,8 @@ function sendCoordinatesToUI(coordinates, alertData) {
 // }
 // coordinates = {x_val: 0, y_val: 0, z_val: 1.0000747442245483}
 
+    console.log("drone :");
+    console.log(drone);
 	if(drone && drone.position){
 		socketServer.emit('droneUpdate', drone);
 	}
