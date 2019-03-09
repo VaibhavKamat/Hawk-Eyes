@@ -1,6 +1,6 @@
-<div class="row set-destination">
+<!-- <div class="row set-destination">
   <div class="col d-flex ">
-    <canvas (click)="showPath() " id="mapCanvas" style="border:5px solid white;background: url('../assets/map_croped.png');width: 500px;height:500px">
+    <canvas (click)="showPath() " id="mapCanvas" style="border:5px solid white;background: url('../assets/map_croped.png');width: 500px;height:500px;background-size: 102% 102%">
     </canvas>
   </div>
   <div class="col">
@@ -16,5 +16,27 @@
   
     
 <button (click)="showPath() " >show</button>
+  </div>
+</div> -->
+
+<div class="row map-page">
+  <div class="col-12">
+    <h3>Select Route</h3>
+    <div class="select-route">
+      <canvas (click)="showPath() " id="mapCanvas" 
+      style="border:5px solid white;background: url('../assets/map_croped.png');
+      width: 430px;height:430px;background-size: 102% 102%">
+      </canvas>
+
+      <div class="mt-4" *ngIf="showBtn==false">
+         Click on Map to select destination.
+        </div>
+
+      <div class="map-btn" *ngIf="showBtn==true">
+        <a routerLink="/drone-config">
+          <button type="button" class="btn">Configure Drones</button>
+        </a>
+      </div>
+    </div>
   </div>
 </div>

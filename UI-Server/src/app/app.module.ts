@@ -14,7 +14,6 @@ import { DroneConfigComponent } from './drone-config/drone-config.component';
 import { HeaderComponent } from './header/header.component';
 import { SummaryComponent } from './analytics/summary/summary.component';
 import { MapComponent } from './map/map.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
 import { AnalyticsGraphsComponent } from './analytics/analytics-graphs/analytics-graphs.component';
 
 @NgModule({
@@ -37,8 +36,7 @@ import { AnalyticsGraphsComponent } from './analytics/analytics-graphs/analytics
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
-	NgbModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

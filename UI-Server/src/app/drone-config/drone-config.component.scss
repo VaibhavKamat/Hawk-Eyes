@@ -4,7 +4,19 @@
     color: var(--color-white);
     padding: 10px 20px;
     min-height: 97vh;
-    overflow-y: scroll;
+    //overflow-y: scroll;
+}
+
+.card{
+    cursor: pointer;
+    &.selected{
+        border: 7px solid #3a9cff;
+    }
+}
+
+.card:hover{
+    transform: scale(1.08);
+    transition: all 0.3s ease-in-out;
 }
 
 .card-body {
@@ -41,4 +53,8 @@
     background-color: #E74885;
     color: var(--color-white);
     font-size: 1.5rem;
+    &:hover{
+        transform: scale(1.08);
+        transition: all 0.1s ease-in-out;
+    }
 }

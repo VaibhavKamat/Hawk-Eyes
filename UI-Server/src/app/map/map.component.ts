@@ -8,6 +8,8 @@ import { Component, AfterViewInit } from '@angular/core';
 export class MapComponent implements AfterViewInit {
 
   constructor() { }
+
+  showBtn:boolean=false;
   canvas: any;
   ctx: any;
   path: any;
@@ -118,6 +120,7 @@ showPath() {
   for (i = 1; i < points.length - 1; i++) {
     var ctx = this.ctx;;
   
+    var self=this;
     (function (i) {      
       setTimeout(() => {        
         ctx.beginPath();  
@@ -126,6 +129,10 @@ showPath() {
         ctx.moveTo(points[i - 1].x, points[i - 1].y);
         ctx.lineTo(points[i].x, points[i].y);
         ctx.stroke();
+
+        if(i == points.length - 2){
+          self.showBtn=true;
+        }
       }, i*2)
     })(i);
   } 
