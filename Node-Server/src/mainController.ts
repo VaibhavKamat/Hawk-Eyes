@@ -125,6 +125,15 @@ let coordinatesArray = [
         "v": 1
     }
 },
+{
+	"id": 2,
+	"args": {
+			"x": 37,
+			"y": 11,
+			"z": 1,
+			"v": 1
+	}
+},
 	{
 		"id": 2,
 		"args": {
@@ -197,12 +206,6 @@ export function initiateDroneMovement(socket) {
 	startEmittingLocations(coordinatesArray);
 }
 
-export function takeOff(callback) {
-	drone_takeOff(function (response) {
-		console.log(response)
-		callback(response)
-	})
-}
 
 export function getVideoFeedData() {
 	getVideoFeed(function (data) {
@@ -226,14 +229,19 @@ function* sendCoordinatesDrone() {
 				'Content-Type': 'application/json'
 			}
 		};
+		var threatCoordinate = false;
+		
 		try {
+			if(coordinatesArray[obj] && coordinatesArray[obj].args && coordinatesArray[obj].args.x == 36 && coordinatesArray[obj].args.y == 11){
+					threatCoordinate = true;
+			}
 			const response = yield fetch(url, options);
 			const data = yield response.json();
 			
 			let pythonResponse = JSON.parse(data)
 			lastResponse = data;
 			if(pythonResponse instanceof Object){
-				sendCoordinatesToUI(pythonResponse,null);
+				sendCoordinatesToUI(pythonResponse,null,threatCoordinate);
 			}
 		}catch(e){
 				console.log(e)
@@ -258,10 +266,10 @@ function runner(genFun) {
 
 export function threatDetected(alertData,socket){
 	socketServer = socket;
-	sendCoordinatesToUI(undefined,alertData);
+	sendCoordinatesToUI(undefined,alertData,undefined);
 }
 
-function sendCoordinatesToUI(coordinates, alertData) {
+function sendCoordinatesToUI(coordinates, alertData,threatFlag) {
 
 	var tempCoordinates
 	let LEVELS = ["success", "danger", "warning"];
@@ -290,10 +298,10 @@ function sendCoordinatesToUI(coordinates, alertData) {
 		threat: {}
 	}
 
-	if (alertData){
+	if (threatFlag){
 
 		drone.threat = {
-				message: "",
+				message: "Threat Detected",
 				level: LEVELS[Math.floor(Math.random()*LEVELS.length)]
 			}
 	}
@@ -326,11 +334,12 @@ export function resetDronePosition(callback){
 
 }
 
-function drone_takeOff(callback) {
+export function drone_takeOff(callback) {
 	var data = {
 		'id': 1
 	};
 	performPostRequest(data, function (response) {
+		console.log(response)
 		callback(response);
 	});
 }
@@ -358,7 +367,7 @@ function performPostRequest(data, callback) {
 
 	var options = {
 		host: droneHost,
-		port: 5000,
+		port: dronePort,
 		path: '/command',
 		method: 'POST',
 		headers: {
@@ -369,7 +378,7 @@ function performPostRequest(data, callback) {
 		}
 	};
 
-
+console.log(options)
 	var req = http.request(options, function (res) {
 		res.setEncoding('utf8');
 		res.on('data', function (chunk) {
