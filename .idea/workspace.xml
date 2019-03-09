@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39fdce15-38f0-47f4-8617-44087c0bae7d" name="Default Changelist" comment="" />
+    <list default="true" id="39fdce15-38f0-47f4-8617-44087c0bae7d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Hawk-Eyes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hawk-Eyes.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle10.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle11.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle12.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle13.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle14.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle15.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle16.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle17.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle17.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle18.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle18.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle19.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle19.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle20.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle21.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle21.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle22.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle22.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle23.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle23.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle24.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle24.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle25.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle25.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle26.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle26.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle27.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle27.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle28.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle28.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle29.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle29.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle3.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle30.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle30.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle31.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle31.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle32.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle4.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle5.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle6.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle7.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle8.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle9.png" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/detected_vehicles/vehicle9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/sockets/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/sockets/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/threat_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/threat_detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/utils/color_recognition_module/test.data" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/utils/color_recognition_module/test.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Server/utils/speed_and_direction_prediction_module/speed_prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Server/utils/speed_and_direction_prediction_module/speed_prediction.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,50 +49,110 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Python-Server/video_feed.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="324">
               <caret line="40" column="21" lean-forward="true" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/airsim/types.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python-Server/core/drone_handler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2363">
-              <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+=======
+            <state relative-caret-position="850">
+              <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#43#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/airsim/client.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Python-Server/threat_detection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
-              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+            <state relative-caret-position="423">
+              <caret line="213" selection-start-line="213" selection-end-line="213" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+>>>>>>> c89cb944d5ad2e8bd242a59fc144e6fb686af16d
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python-Server/vehicle_detection_main.py">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="340">
+              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+=======
+            <state relative-caret-position="341">
+              <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+>>>>>>> c89cb944d5ad2e8bd242a59fc144e6fb686af16d
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Python-Server/utils/speed_and_direction_prediction_module/speed_prediction.py">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="2363">
+              <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+=======
+            <state relative-caret-position="578">
+              <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Python-Server/utils/visualization_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="96" column="4" selection-start-line="96" selection-start-column="4" selection-end-line="96" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Python-Server/sockets/server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+>>>>>>> c89cb944d5ad2e8bd242a59fc144e6fb686af16d
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Python-Server/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="1207">
+              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+=======
+            <state relative-caret-position="323">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+>>>>>>> c89cb944d5ad2e8bd242a59fc144e6fb686af16d
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Python-Server/sockets/client.py">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="6613">
               <caret line="404" lean-forward="true" selection-start-line="404" selection-end-line="404" />
+=======
+            <state>
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+>>>>>>> c89cb944d5ad2e8bd242a59fc144e6fb686af16d
             </state>
           </provider>
         </entry>
@@ -70,6 +169,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>video_feed_ml_drone</find>
+      <find>imshow</find>
+      <find>ROI</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -82,23 +183,50 @@
         <option value="$PROJECT_DIR$/Python-Server/vehicle_detection_main.py" />
         <option value="$PROJECT_DIR$/Python-Server/video_feed.py" />
         <option value="$PROJECT_DIR$/Python-Server/core/drone_handler.py" />
+        <option value="$PROJECT_DIR$/Python-Server/sockets/server.py" />
+        <option value="$PROJECT_DIR$/Python-Server/utils/speed_and_direction_prediction_module/speed_prediction.py" />
+        <option value="$PROJECT_DIR$/Python-Server/threat_detection.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="25" />
-    <option name="width" value="1750" />
-    <option name="height" value="980" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-7" />
+    <option name="width" value="814" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Hawk-Eyes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hawk-Eyes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Hawk-Eyes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hawk-Eyes" type="462c0819:PsiDirectoryNode" />
+              <item name="Python-Server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Hawk-Eyes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hawk-Eyes" type="462c0819:PsiDirectoryNode" />
+              <item name="Python-Server" type="462c0819:PsiDirectoryNode" />
+              <item name="sockets" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -114,7 +242,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.video_feed">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Hawk-Eyes" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,6 +256,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Python-Server/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Hawk-Eyes" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python-Server/sockets" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Python-Server/sockets/server.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -160,11 +309,13 @@
     <list>
       <item itemvalue="Python.app" />
       <item itemvalue="Python.video_feed" />
+      <item itemvalue="Python.server" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.video_feed" />
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.video_feed" />
+        <item itemvalue="Python.server" />
       </list>
     </recent_temporary>
   </component>
@@ -182,20 +333,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
+=======
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+>>>>>>> c89cb944d5ad2e8bd242a59fc144e6fb686af16d
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2247191" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2243346" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32839838" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32974428" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32839838" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -203,18 +358,18 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2247191" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2243346" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32839838" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32839838" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -231,10 +386,34 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Python-Server/video_feed.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="40" column="21" lean-forward="true" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+=======
+    <entry file="file://$PROJECT_DIR$/Python-Server/vehicle_detection_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6613">
+          <caret line="404" lean-forward="true" selection-start-line="404" selection-end-line="404" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/airsim/types.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python-Server/core/drone_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="146" selection-start-line="146" selection-end-line="146" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+>>>>>>> c89cb944d5ad2e8bd242a59fc144e6fb686af16d
         </state>
       </provider>
     </entry>
@@ -245,16 +424,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python-Server/core/drone_handler.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/tensorflow/python/framework/ops.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="2363">
           <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+=======
+        <state relative-caret-position="40647">
+          <caret line="2425" column="6" selection-start-line="2425" selection-start-column="6" selection-end-line="2425" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python-Server/video_feed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+          <folding>
+            <element signature="e#43#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python-Server/utils/speed_and_direction_prediction_module/speed_prediction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python-Server/sockets/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python-Server/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python-Server/sockets/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+>>>>>>> c89cb944d5ad2e8bd242a59fc144e6fb686af16d
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/airsim/client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
@@ -266,6 +488,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6613">
           <caret line="404" lean-forward="true" selection-start-line="404" selection-end-line="404" />
+=======
+    <entry file="file://$PROJECT_DIR$/Python-Server/utils/visualization_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="96" column="4" selection-start-line="96" selection-start-column="4" selection-end-line="96" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python-Server/threat_detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="213" selection-start-line="213" selection-end-line="213" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+>>>>>>> c89cb944d5ad2e8bd242a59fc144e6fb686af16d
         </state>
       </provider>
     </entry>

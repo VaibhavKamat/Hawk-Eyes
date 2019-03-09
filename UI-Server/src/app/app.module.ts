@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DroneConfigComponent } from './drone-config/drone-config.component';
 import { HeaderComponent } from './header/header.component';
+import { SummaryComponent } from './analytics/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HeaderComponent } from './header/header.component';
     ActivityComponent,
     HomeComponent,
     DroneConfigComponent,
-    HeaderComponent
+    HeaderComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
