@@ -55,11 +55,11 @@ let swaggerPath = path.resolve(__dirname, './swagger.yaml');
 let controllerPath = path.resolve(__dirname, './actions');
 let rootPath = '/hawkeyes/v1';
 const droneObj= {
-  id: 1,
-  name: 'Drone-1',
-  battery: 50,
-  locationName: 'Bus Stand',
-  speed: 10,
+  id: "A0123G",
+  name: 'Drone AR',
+  battery: 78,
+  locationName: 'Sector 1B',
+  speed: 17,
   signalStrength: 'Good',
   timeLeft: 3,
   flightStatus: 'flying',
