@@ -220,9 +220,14 @@ function* sendCoordinatesDrone() {
 		console.log(options)
 		const response = yield fetch(url, options);
 		const data = yield response.json();
-		const user = data
+		let user = data
 		console.log(user);
-		sendCoordinatesToUI(user);
+
+		user.replace("<Vector3r> ","");
+		data.replace(/'/g,'"');
+
+		user = JSON.parse(user);
+		sendCoordinatesToUI(user, null);
 	}
 	// });
 
@@ -242,8 +247,46 @@ function runner(genFun) {
 }
 
 
-function sendCoordinatesToUI(coordinates) {
-	socketServer.emit('droneUpdate', coordinates);
+function sendCoordinatesToUI(coordinates, alertData) {
+
+
+	let LEVELS = ["success", "danger", "warning"];
+
+
+	let drone  = {
+    id: "A0123G",
+    name: "Drone AR",
+    battery: 78,
+    locationName: "",
+    position: {
+			latitude: coordinates.x_val,
+    	longitude: coordinates.y_val
+		},
+    flightStatus: "Online",
+    speed: 17,
+    altitude: 173,
+    upTime: 67,
+    timeLeft: 278,
+		signalStrength: "Good",
+		threat: {}
+	}
+
+	if (alertData){
+
+		drone.threat = {
+				message: "",
+				level: LEVELS[Math.floor(Math.random()*LEVELS.length)]
+			}
+	}
+//{
+// 	message: "",
+// 	level: LEVELS[Math.floor(Math.random()*LEVELS.length)]
+// }
+// coordinates = {x_val: 0, y_val: 0, z_val: 1.0000747442245483}
+
+	console.log(drone);
+
+	socketServer.emit('droneUpdate', drone);
 
 }
 
