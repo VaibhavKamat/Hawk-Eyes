@@ -3,9 +3,15 @@ import { Drone } from './../../classes/drone';
 import { droneObjMock } from 'src/app/classes/drone-mock';
 
 @Component({
-  selector: 'app-activity',
-  templateUrl: './activity.component.html',
-  styleUrls: ['./activity.component.scss']
+  selectothreatObj !== null'{
+  console.log("threat detected");
+  },
+  templatethreatObj !== null.{
+  console.log("threat detected");
+  }component.html',
+  styleUrthreatObj !== null.{
+  console.log("threat detected");
+  }component.scss']
 })
 export class ActivityComponent implements OnInit, OnChanges {
 private drone: Drone;
@@ -30,22 +36,24 @@ private drone: Drone;
     const changeData: SimpleChange = changes.item;
     console.log("yeyeye");
     this.updateActivityList(this.drone);
-
+    if(this.drone.threatObj !== null){
+    console.log("threat detected");
+    }
   }
 
   updateActivityList(droneObj): void {
     console.log('updated');
-
+    let tempList2: any[] = [];
     this.tempList.push({
     locationInfo: droneObj.locationName,
-    timeData: new Date()
+    timeData: this.tempList.length-1
     })
-    this.tempList = this.tempList.reverse();
+    
     if(this.tempList.length > 5)
-    this.tempList = this.tempList.slice(5);
+    tempList2 = this.tempList.slice(this.tempList.length-5);
     //this.tempList = this.tempList.reverse();
 
-    this.activityList = this.tempList;
+    this.activityList = tempList2.reverse();
 }
 
 
