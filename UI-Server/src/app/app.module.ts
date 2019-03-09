@@ -10,6 +10,7 @@ import { DroneNavMapComponent } from './dashboard/drone-nav-map/drone-nav-map.co
 import { ActivityComponent } from './dashboard/drone-activity/activity.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SummaryComponent } from './analytics/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
     DroneActionsComponent,
     DroneNavMapComponent,
     ActivityComponent,
-    HomeComponent
+    HomeComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
