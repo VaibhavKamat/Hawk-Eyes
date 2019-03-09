@@ -212,18 +212,14 @@ class Detector:
 
                     ret, encoded_jpeg = cv2.imencode(decode_extension, input_frame)
                     output_frame = encoded_jpeg.tobytes()
-                    msg["frame_id"] = idx
-                    msg["output_frame"] = output_frame
-                    if predicted_speed > 40 and predicted_speed < 200:
+                    if predicted_speed > 40 and predicted_speed < 100:
                         print("Please write the code for Alarm in the UI", predicted_speed)
                         threatObject = msg
                         sio.connect('http://localhost:3000')
 
                     else:
                         msg["Threat"] = False
-
-                    print(msg)
-                    self.client_socket.send(msg)
+                    #self.client_socket.send(msg)
                     # file_util.write_file(os.path.normpath("image_data" + '/image%03d.png' % idx), output_frame)
                     idx = idx + 1
                     yield (b'--frame\r\n'
