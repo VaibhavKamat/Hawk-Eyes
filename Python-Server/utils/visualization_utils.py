@@ -31,7 +31,7 @@ from utils.color_recognition_module import color_recognition_api
 
 # Variables
 is_vehicle_detected = [0]
-ROI_POSITION = 0
+ROI_POSITION = 100
 
 _TITLE_LEFT_MARGIN = 10
 _TITLE_TOP_MARGIN = 10
@@ -100,7 +100,7 @@ def draw_bounding_box_on_image_array(current_frame_number, image,
                                      ymax,
                                      xmax,
                                      color='red',
-                                     thickness=4,
+                                     thickness=2,
                                      display_str_list=(),
                                      use_normalized_coordinates=True):
     """Adds a bounding box to an image (numpy array).
@@ -135,7 +135,7 @@ def draw_bounding_box_on_image(current_frame_number, image,
                                ymax,
                                xmax,
                                color='red',
-                               thickness=4,
+                               thickness=2,
                                display_str_list=(),
                                use_normalized_coordinates=True):
     """Adds a bounding box to an image.
@@ -187,7 +187,7 @@ def draw_bounding_box_on_image(current_frame_number, image,
                                                                                                                detected_vehicle_image,
                                                                                                                ROI_POSITION)
 
-    predicted_color = color_recognition_api.color_recognition(detected_vehicle_image)
+    predicted_color = ""#color_recognition_api.color_recognition(detected_vehicle_image)
 
     try:
         font = ImageFont.truetype('arial.ttf', 16)
@@ -229,7 +229,7 @@ def draw_bounding_box_on_image(current_frame_number, image,
 def draw_bounding_boxes_on_image_array(image,
                                        boxes,
                                        color='red',
-                                       thickness=4,
+                                       thickness=2,
                                        display_str_list_list=()):
     """Draws bounding boxes on image (numpy array).
 
@@ -256,7 +256,7 @@ def draw_bounding_boxes_on_image_array(image,
 def draw_bounding_boxes_on_image(image,
                                  boxes,
                                  color='red',
-                                 thickness=4,
+                                 thickness=2,
                                  display_str_list_list=()):
     """Draws bounding boxes on image.
 
@@ -294,7 +294,7 @@ def draw_bounding_boxes_on_image_tensors(images,
                                          scores,
                                          category_index,
                                          max_boxes_to_draw=20,
-                                         min_score_thresh=0.25):
+                                         min_score_thresh=0.2):
     """Draws bounding boxes on batch of image tensors.
 
     Args:
@@ -320,7 +320,7 @@ def draw_bounding_boxes_on_image_tensors(images,
         max_boxes_to_draw=max_boxes_to_draw,
         min_score_thresh=min_score_thresh,
         agnostic_mode=False,
-        line_thickness=4)
+        line_thickness=2)
 
     def draw_boxes(image_boxes_classes_scores):
         """Draws boxes on image."""
@@ -424,7 +424,7 @@ def visualize_boxes_and_labels_on_image_array(current_frame_number, image,
                                               keypoints=None,
                                               use_normalized_coordinates=False,
                                               max_boxes_to_draw=20,
-                                              min_score_thresh=.25,
+                                              min_score_thresh=.2,
                                               agnostic_mode=False,
                                               line_thickness=4):
     """Overlay labeled boxes on an image with formatted scores and label names.

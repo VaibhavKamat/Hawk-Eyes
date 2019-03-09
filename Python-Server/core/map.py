@@ -9,7 +9,7 @@ def get_command_map(drone: Instance):
             "args": False,
             "response": {
                 "code": 200,
-                "value": drone.get_landing_state
+                "value": return_true
             }
         },
         2: {

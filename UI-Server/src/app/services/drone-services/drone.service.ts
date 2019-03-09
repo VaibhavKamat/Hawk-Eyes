@@ -21,7 +21,8 @@ export class DroneService {
     getData: 'http://localhost:5000/data',
     captureImg: 'http://localhost:5000/capture',
     updateSettings: 'http://localhost:5000/update',
-    returnToBase: 'http://localhost:5000/return'
+    returnToBase: 'http://localhost:5000/return',
+    takeOff:'http://localhost:3000/takeoff',
 };
 
  private headersOptions = {
@@ -54,6 +55,11 @@ export class DroneService {
      catchError(DroneRequestErrorHandlersService.
       returnToBaseError));
  }
+ takeOff(): Observable<any> {
+  return this.http.get<any>(this.requestUri.takeOff).pipe(
+    catchError(DroneRequestErrorHandlersService.
+      getDroneError));
+}
 
  // Access 4 : update settings
  updateSettings(altitude, speed): Observable<Drone> {
