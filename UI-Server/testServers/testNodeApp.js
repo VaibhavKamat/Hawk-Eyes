@@ -66,15 +66,19 @@ location : '/documents/file1.jpg'});
     position: {
         latitude: 100.1,
         longitude: 100.1,
-    }
+    },
+    threat:{
+      message: "Message",
+      level: "zero"
+  }  
    };
 
       
-    io.emit("droneUpdate", { type: "new-message",  'droneObj' :  droneObj });
+   
     
     socket.on("visionUpdate", message => {
       console.log("Message Received: " + message);
-      // io.emit("droneUpdate", { type: "new-message", text: "drone-1" });
+        io.emit("droneUpdate", { type: "new-message",  'droneObj' :  droneObj });
     });
   });
       

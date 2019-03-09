@@ -72,7 +72,7 @@ connect(): Subject<MessageEvent> {
   this.nodeSocket = io(this.requestUri.webnodeSocket);
 
   const droneObservable = new Observable(observerD => {
-    this.nodeSocket.on('coordinates', (data) => {
+    this.nodeSocket.on('droneUpdate', (data) => {
       observerD.next(data);
     });
     return () => this.nodeSocket.disconnect();

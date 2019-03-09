@@ -39,15 +39,15 @@ ngOnInit() {
       () => {this.selectedDrone = this.droneObj;
              console.log('done'); });
 
-      this.createAirsimAlertSocket();
-      this.airsimSocketData.subscribe(
-        data => {
-          console.log(data);
-          this.airsimSocketData.next('you are compromised too');
-        },
-        err => console.error('socket error' + err),
-        () => { console.log('alert complete '); }
-      );
+      // this.createAirsimAlertSocket();
+      // this.airsimSocketData.subscribe(
+      //   data => {
+      //     console.log(data);
+      //     this.airsimSocketData.next('you are compromised too');
+      //   },
+      //   err => console.error('socket error' + err),
+      //   () => { console.log('alert complete '); }
+      // );
 
       }
 
@@ -58,10 +58,10 @@ ngOnInit() {
              .pipe(map( (response: any): any => response )) as Subject<any>;
   }
 
-  createAirsimAlertSocket(): void {
-    // this.airsimSocketData = this.airsimAlertsService.connect()
-    //          .pipe(map( (response: any): any => response )) as Subject<any>;
-  }
+  // createAirsimAlertSocket(): void {
+  //   // this.airsimSocketData = this.airsimAlertsService.connect()
+  //   //          .pipe(map( (response: any): any => response )) as Subject<any>;
+  // }
 
 
 }

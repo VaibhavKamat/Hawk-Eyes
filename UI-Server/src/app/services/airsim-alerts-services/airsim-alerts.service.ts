@@ -3,8 +3,7 @@ import { Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import * as io from 'socket.io-client';
 import { catchError, map } from 'rxjs/operators';
-import { Socket } from 'ngx-socket-io';
-import { Coordinates } from './../coordinates'
+
 
 
 @Injectable({
@@ -14,13 +13,11 @@ export class AirsimAlertsService {
 
   private airsimSocket;
   private socketNew;
-  currentDocument = this.socket.fromEvent<Coordinates>('coordinates');
-  documents = this.socket.fromEvent<string[]>('coordinates');
-
+ 
   private requestUri = {
     websocketAirsim: 'http://localhost:3000/',
 };
-  constructor(private http: HttpClient,private socket: Socket) { }
+  constructor(private http: HttpClient) { }
 
   // connect(): Subject<MessageEvent> {
   //   this.airsimSocket = io(this.requestUri.websocketAirsim);
