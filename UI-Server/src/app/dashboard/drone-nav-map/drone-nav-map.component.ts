@@ -58,12 +58,10 @@ export class DroneNavMapComponent implements AfterViewInit, OnChanges {
     this.droneService.takeOff()
       .subscribe(
         response => {
-          console.log("teetteteteteteetet",response);
-          if (response.status === true) {
-              this.showPath();
-          } else {
-            console.log('command failed');
-          }
+          this.showPath();
+          this.droneService.initiateMovement().subscribe( response => {
+            console.log("done rann maaan")
+          })
         },
         err => console.log('command error' + err));
   }
@@ -177,7 +175,7 @@ export class DroneNavMapComponent implements AfterViewInit, OnChanges {
           //ctx.moveTo( (points[i - 1].x /7) , points[i - 1].y/7);
           moveDrone(self,points[i].x, (points[i].y));
           ctx.stroke();
-        },i*60)
+        },i*80)
       })(i);
     } 
     this.ctx.closePath();

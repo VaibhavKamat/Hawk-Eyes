@@ -27,11 +27,9 @@ private drone: Drone;
 
   ngOnChanges(changes: SimpleChanges){
     const changeData: SimpleChange = changes.item;
-    console.log("yeyeye");
+    console.log("change 1");
     this.updateActivityList(this.drone);
-    if(this.drone.threatObj !== null){
-    console.log("threat detected");
-    }
+   
   }
 
   updateActivityList(droneObj): void {
@@ -42,6 +40,7 @@ private drone: Drone;
     timeData: 50 - this.tempList.length
     })
     
+    tempList2 = this.tempList;
     if(this.tempList.length > 5)
     tempList2 = this.tempList.slice(this.tempList.length-5);
     //this.tempList = this.tempList.reverse();
