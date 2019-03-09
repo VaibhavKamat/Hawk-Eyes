@@ -16,8 +16,7 @@ private drone: Drone;
 
   tempList: any[] = [];
   activityList: any[] = [];
-  activitySize = 5;
-  activityCount = 0;
+
 
 
 
@@ -28,24 +27,25 @@ private drone: Drone;
 
   ngOnChanges(changes: SimpleChanges){
     const changeData: SimpleChange = changes.item;
-    console.log("yeyeye");
+    console.log("change 1");
     this.updateActivityList(this.drone);
-
+   
   }
 
   updateActivityList(droneObj): void {
     console.log('updated');
-
+    let tempList2: any[] = [];
     this.tempList.push({
     locationInfo: droneObj.locationName,
-    timeData: new Date()
+    timeData: 50 - this.tempList.length
     })
-    this.tempList = this.tempList.reverse();
+    
+    tempList2 = this.tempList;
     if(this.tempList.length > 5)
-    this.tempList = this.tempList.slice(5);
+    tempList2 = this.tempList.slice(this.tempList.length-5);
     //this.tempList = this.tempList.reverse();
 
-    this.activityList = this.tempList;
+    this.activityList = tempList2.reverse();
 }
 
 

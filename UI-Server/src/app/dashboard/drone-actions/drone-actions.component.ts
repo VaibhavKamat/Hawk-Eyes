@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {Drone} from './../../classes/drone';
 import { DroneService } from './../../services/drone-services/drone.service';
@@ -8,12 +8,17 @@ import { ResposeConfigs } from './../../classes/responseConfig';
   templateUrl: './drone-actions.component.html',
   styleUrls: ['./drone-actions.component.scss']
 })
-export class DroneActionsComponent implements OnInit {
+export class DroneActionsComponent implements OnInit, OnChanges {
 
+  private drone: Drone;
   constructor(private droneService: DroneService, private fb: FormBuilder) {
 
   }
-  @Input() drone: Drone;
+  @Input()
+  set setDrone(val: Drone){
+    this.drone = val;
+    }
+  
   @Output() updateForm = new EventEmitter();
 
  settingsObj: any = {
@@ -29,7 +34,17 @@ export class DroneActionsComponent implements OnInit {
     }
   }
 
-
+  ngOnChanges(changes: SimpleChanges){
+    const changeData: SimpleChange = changes.item;
+    console.log("change 1");
+  if(null==undefined){
+    console.log("true")
+  }
+    if(this.drone.threat && this.drone.threat.level ){
+     document.getElementById('raiseAlert').click();
+    console.log("threat activated ");
+    }
+  }
   onSubmit() {
   console.log(this.settingsObj.speed);
   this.updateSettings(this.settingsObj.speed, this.settingsObj.altitude);

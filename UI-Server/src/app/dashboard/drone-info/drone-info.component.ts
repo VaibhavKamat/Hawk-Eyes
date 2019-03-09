@@ -36,7 +36,7 @@ export class DroneInfoComponent implements OnInit {
       },
       err => {
         console.error('socket error' + err);
-        this.droneObj = droneObjMock;
+        // this.droneObj = droneObjMock;
       },
       () => {
       this.selectedDrone = this.droneObj;

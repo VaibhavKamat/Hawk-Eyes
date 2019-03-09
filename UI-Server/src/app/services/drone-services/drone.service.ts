@@ -23,6 +23,7 @@ export class DroneService {
     updateSettings: 'http://localhost:5000/update',
     returnToBase: 'http://localhost:5000/return',
     takeOff:'http://localhost:3000/takeoff',
+    initiate:'http://localhost:3000/initiateDroneMovement'
 };
 
  private headersOptions = {
@@ -57,6 +58,12 @@ export class DroneService {
  }
  takeOff(): Observable<any> {
   return this.http.get<any>(this.requestUri.takeOff).pipe(
+    catchError(DroneRequestErrorHandlersService.
+      getDroneError));
+}
+
+initiateMovement(): Observable<any> {
+  return this.http.get<any>(this.requestUri.initiate).pipe(
     catchError(DroneRequestErrorHandlersService.
       getDroneError));
 }

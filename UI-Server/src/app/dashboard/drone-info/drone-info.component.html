@@ -1,154 +1,42 @@
-<div class="row drone-info-css">
-  <div class="main-title-css col-md-12 header">
-    <span class=""></span><span class="col-md-12"> Hawk Eye </span>
-  </div>
-</div>
-<div *ngIf="droneObj" class="row drone-main-body">
-  <div class="col-md-9">
-    <div *ngIf="droneObj; else emptyDroneTemplate" class="select-drone-cls col-md-12">
-      <div id={{droneObj.name}} class="drone-Name-cls col-md-2">
-        <!-- <span id="name-label">Drone Name : </span> -->
-        <span id="drone-name">{{droneObj.name}}</span>
+<div class="dashboard">
+  <div class="row">
+    <div class="col-lg-9 px-2 left-panel">
+      <h3 class=" px-4">Dashboard</h3>
+      <div class="row">
+        <div class="col-8">
+          <div class="stream">
+            <img src="/./../../../assets/kashmir-road-map.jpg" width="100%" height="400px" />
+            <!-- <image width=800 height=400 src="http://localhost:5001/video_feed" /> -->
+          </div>
+
+        </div>
+        <div class="col-4 text-center">
+          <div class="drone-details">
+            <div class="detail-item">
+              <div class="icon">
+                <i class="fas fa-map-marker-alt fa-3x"></i>
+              </div>
+              <div class="text">
+                <div class="name">
+                  {{droneObj.locationName}}
+                </div>
+                <div class="value">
+                  ({{droneObj.position.latitude}},{{droneObj.position.longitude}})
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- <div class="status-primary">
-      <div class="flight-status">
-        <span class={{droneObj.flightStatus}}></span><span>{{droneObj.flightStatus}}</span>
-        <span>{{droneObj.upTime}}</span>
-      </div>
-    </div> -->
-
-      <div class="drone-info-section col-md-10">
-
-        <div class="info-block col-md-3">
-
-          <i class="material-icons size-large ">battery_std</i>
-
-          <div class="data ">
-            <div class=" drone-info-primary row ">{{droneObj.locationName}} </div>
-            <div class=" drone-info-sub row">({{droneObj.position.latitude}},{{droneObj.position.longitude}})</div>
-          </div>
-        </div>
-        <div class="info-block col-md-3 ">
-
-          <i class="material-icons ">battery_std</i>
-
-          <div class="data ">
-            <div class=" drone-info-primary row">{{droneObj.battery}} % </div>
-            <div class=" drone-info-sub  row">{{droneObj.timeLeft}} hrs appox.</div>
-          </div>
-        </div>
-
-
-
-
-        <div class=" info-block col-md-3">
-
-          <i class="material-icons ">battery_std</i>
-
-          <div class="data ">
-            <div class=" drone-info-primary row">{{droneObj.signalStrength}} </div>
-            <div class=" drone-info-sub row ">Signal</div>
-          </div>
-        </div>
-        <div class=" info-block col-md-3">
-
-          <i class="material-icons ">battery_std</i>
-
-          <div class="data">
-            <div class=" drone-info-primary ">{{droneObj.speed}} km/h</div>
-            <div class=" drone-info-sub">Alt : {{droneObj.altitude}} mts</div>
-          </div>
-        </div>
-
-
-
-        <!--<span class=" drone-info col-md-6">{{drone.id}}</span>-->
-      </div>
-    </div>
-
-    <div class="col-md-12 drone-vision-div">
-      <img src="/./../../../assets/kashmir-road-map.jpg" width="80%" height="400px" />
-      <!-- <image width=800 height=400 src="http://localhost:5001/video_feed" /> -->
-    </div>
 
     <div class="col-md-12">
-      <app-drone-actions [drone]="droneObj" (updateForm)="this.droneObj=$event"></app-drone-actions>
+      <app-drone-actions [setDrone]="droneObj" (updateForm)="this.droneObj=$event"></app-drone-actions>
     </div>
-  </div>
-  <ng-template #emptyDroneTemplate>
-      <div class="select-drone-cls col-md-12">
-        <div id="Uninitiated" class="drone-Name-cls col-md-2">
-          <!-- <span id="name-label">Drone Name : </span> -->
-          <span id="drone-name">Uninitiated</span>
-        </div>
-        <!-- <div class="status-primary">
-        <div class="flight-status">
-          <span class={{droneObj.flightStatus}}></span><span>{{droneObj.flightStatus}}</span>
-          <span>{{droneObj.upTime}}</span>
-        </div>
-      </div> -->
-  
-        <div class="drone-info-section col-md-10">
-  
-          <div class="info-block col-md-3">
-  
-            <i class="material-icons size-large ">battery_std</i>
-  
-            <div class="data ">
-              <div class=" drone-info-primary row ">-</div>
-              <div class=" drone-info-sub row">( - , - )</div>
-            </div>
-          </div>
-          <div class="info-block col-md-3 ">
-  
-            <i class="material-icons ">battery_std</i>
-  
-            <div class="data ">
-              <div class=" drone-info-primary row">- % </div>
-              <div class=" drone-info-sub  row">- hrs appox.</div>
-            </div>
-          </div>
-  
-  
-  
-  
-          <div class=" info-block col-md-3">
-  
-            <i class="material-icons ">battery_std</i>
-  
-            <div class="data ">
-              <div class=" drone-info-primary row"> - </div>
-              <div class=" drone-info-sub row ">Signal</div>
-            </div>
-          </div>
-          <div class=" info-block col-md-3">
-  
-            <i class="material-icons ">battery_std</i>
-  
-            <div class="data">
-              <div class=" drone-info-primary ">- km/h</div>
-              <div class=" drone-info-sub">- mts (Alt)</div>
-            </div>
-          </div>
-  
-  
-  
-          <!--<span class=" drone-info col-md-6">{{drone.id}}</span>-->
-        </div>
+    <div class="col-lg-3 right-panel">
+      <app-activity [setDrone]="droneObj"></app-activity>
+      <div id="map-canvas-div" class="row">
+        <app-drone-nav-map [drone]="droneObj"></app-drone-nav-map>
       </div>
-  </ng-template>
-  
-  <!--
-  
-<app-drone-detail [drone]="droneObj"></app-drone-detail>
-
--->
-
-  <div class=" activity col-md-3"> 
-     <app-activity [setDrone]="droneObj"></app-activity>
-    <div id="map-canvas-div" class="row">
-      <app-drone-nav-map [drone]="droneObj"></app-drone-nav-map>
     </div>
   </div>
-
 </div>

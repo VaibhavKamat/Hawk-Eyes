@@ -20,7 +20,7 @@ export class Drone {
     upTime: number;
     timeLeft: number;
     signalStrength: string;
-    threatObj: Threat;
+    threat: Threat;
 
 }
 

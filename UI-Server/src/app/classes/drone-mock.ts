@@ -15,7 +15,7 @@ export const droneObjMock: Drone = {
         latitude: 100.1,
         longitude: 100.1,
     },
-    threatObj: {
+    threat: {
         message: "test",
         level: ""
     }

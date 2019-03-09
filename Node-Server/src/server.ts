@@ -55,11 +55,11 @@ let swaggerPath = path.resolve(__dirname, './swagger.yaml');
 let controllerPath = path.resolve(__dirname, './actions');
 let rootPath = '/hawkeyes/v1';
 const droneObj= {
-  id: 1,
-  name: 'Drone-1',
-  battery: 50,
-  locationName: 'Bus Stand',
-  speed: 10,
+  id: "A0123G",
+  name: 'Drone AR',
+  battery: 78,
+  locationName: 'Sector 1B',
+  speed: 17,
   signalStrength: 'Good',
   timeLeft: 3,
   flightStatus: 'flying',
@@ -94,8 +94,10 @@ app.use("/start",function(req,res){
   res.send()
 })
 app.use("/takeoff",function(req,res){
-  mainController.takeOff(function(resp){
-    res.send(resp);
+  console.log("in take off")
+  
+  mainController.drone_takeOff(function(resp){
+    res.send();
   });
 })
 
@@ -103,7 +105,7 @@ app.use("/resetDronePosition",function(req,res){
     
   mainController.resetDronePosition(function(response){
     console.log(response)
-    res.send(response);
+    res.send();
   })
 });
 
