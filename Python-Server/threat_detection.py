@@ -13,6 +13,7 @@ from core import drone_handler
 from utils import label_map_util
 from utils import visualization_utils as vis_util
 from sockets.client import SocketClient
+import socketio
 
 MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
 MODEL_FILE = MODEL_NAME + '.tar.gz'
@@ -26,13 +27,21 @@ PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
 PATH_TO_LABELS = os.path.join('data', 'mscoco_label_map.pbtxt')
 
 NUM_CLASSES = 90
+sio = socketio.Client()
 
 
 class Detector:
+    threatObject = {}
+
+    @sio.on('connect')
+    def on_connect():
+        sio.emit('threatAlert',threatObject)
+        sio.disconnect()
+
     def __init__(self):
         # ip = "10.244.25.16"
-        self.client_socket = SocketClient(socket.gethostname(), 5010)
-        file_util.delete_all_files(os.path.normpath("image_data"))
+        # self.client_socket = SocketClient(socket.gethostname(), 5010)
+        # file_util.delete_all_files(os.path.normpath("image_data"))
         self.video_feed_drone = drone_handler.Instance()
         self.detection_graph = tf.Graph()
         with self.detection_graph.as_default():
@@ -207,7 +216,8 @@ class Detector:
                     msg["output_frame"] = output_frame
                     if predicted_speed > 40 and predicted_speed < 200:
                         print("Please write the code for Alarm in the UI", predicted_speed)
-                        msg["Threat"] = True
+                        threatObject = msg
+                        sio.connect('http://localhost:3000')
 
                     else:
                         msg["Threat"] = False
