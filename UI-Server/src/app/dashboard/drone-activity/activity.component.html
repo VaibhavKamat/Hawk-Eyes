@@ -1,17 +1,17 @@
 
 <h3 class="titile"> Activity </h3>
 <div class="activity-block">
-  <div  *ngFor="let location of locations" class="row  activity-item ">
+  <div  *ngFor="let activity of activityList" class="row  activity-item ">
     <div class="col-md-2 activity-icon ">
         <i class="material-icons">
-            {{location.status}}
+            {{activity.status}}
         </i>
     </div>
     <div class="col-md-5 activity-title">
-        {{location.location}}
+        {{activity.locationInfo}}
     </div>
     <div class="col-md-5 activity-">
-        {{location.time}}
+        {{activity.timeData}}
     </div>
   </div>
 </div>
