@@ -69,18 +69,25 @@ const droneObj= {
   }
  };
 
+ let locations = ["Anantnag","Badgam",	"Bandipore",	"Baramula",	"Doda",	"Ganderbal",	"Jammu",	"Kargil"];
 io.on('connection', (socket) => {
   console.log("Connected to Socket!!"+ socket.id);
   // Receiving Todos from client
   socket.on('coordinates', (data) => {
     console.log('socketData: '+JSON.stringify(data));
   });
-  socket.on('python', (data) => {
-    console.log('socketData: '+JSON.stringify(data));
+  io.on('threatAlert', function(data ){
+
+    console.log("threat detected ..");
+    console.log(data);
+
+    mainController.sendCoordinatesToUI(coordinates,data);
+
   });
 
   io.emit("droneUpdate", { type: "new-message",  'droneObj' :  droneObj });
 });
+
 
 app.use("/start",function(req,res){
   mainController.intiateSocketFlow();
