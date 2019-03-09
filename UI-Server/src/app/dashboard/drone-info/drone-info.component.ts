@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Drone} from './../../classes/drone';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Drone } from './../../classes/drone';
 import { DroneService } from './../../services/drone-services/drone.service';
 import { AirsimAlertsService } from './../../services/airsim-alerts-services/airsim-alerts.service';
 import { Subject } from 'rxjs';
@@ -17,45 +17,52 @@ export class DroneInfoComponent implements OnInit {
 
   constructor(private droneService: DroneService, private airsimAlertsService: AirsimAlertsService) { }
 
-droneObj: Drone;
-nodeSocketData: Subject<any>;
-airsimSocketData: Subject<any>;
+  droneObj: Drone;
+  nodeSocketData: Subject<any>;
+  airsimSocketData: Subject<any>;
 
 
-selectedDrone: Drone;
+  selectedDrone: Drone;
 
-ngOnInit() {
-      // this.getDroneData();
-      this.getDroneStreamData();
-      this.nodeSocketData.subscribe(
-        data => {
+
+  ngOnInit() {
+    // this.getDroneData();
+    this.getDroneStreamData();
+    this.nodeSocketData.subscribe(
+      data => {
         console.log(data);
         this.droneObj = data.droneObj;
         this.nodeSocketData.next(data.droneObj.name);
-        },
-        err => { console.error('socket error' + err);
-                 this.droneObj = droneObjMock;
-               },
-      () => {this.selectedDrone = this.droneObj;
-             console.log('done'); });
+      },
+      err => {
+        console.error('socket error' + err);
+        this.droneObj = droneObjMock;
+      },
+      () => {
+      this.selectedDrone = this.droneObj;
+        console.log('done');
+      });
 
-      // this.createAirsimAlertSocket();
-      // this.airsimSocketData.subscribe(
-      //   data => {
-      //     console.log(data);
-      //     this.airsimSocketData.next('you are compromised too');
-      //   },
-      //   err => console.error('socket error' + err),
-      //   () => { console.log('alert complete '); }
-      // );
+    // this.createAirsimAlertSocket();
+    // this.airsimSocketData.subscribe(
+    //   data => {
+    //     console.log(data);
+    //     this.airsimSocketData.next('you are compromised too');
+    //   },
+    //   err => console.error('socket error' + err),
+    //   () => { console.log('alert complete '); }
+    // );
 
-      }
+
+
+   
+  }
 
 
 
   getDroneStreamData(): void {
     this.nodeSocketData = this.droneService.connect()
-             .pipe(map( (response: any): any => response )) as Subject<any>;
+      .pipe(map((response: any): any => response)) as Subject<any>;
   }
 
   // createAirsimAlertSocket(): void {

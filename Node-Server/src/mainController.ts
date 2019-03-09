@@ -197,9 +197,10 @@ export function initiateDroneMovement(socket) {
 	startEmittingLocations(coordinatesArray);
 }
 
-export function takeOff() {
+export function takeOff(callback) {
 	drone_takeOff(function (response) {
 		console.log(response)
+		callback(response)
 	})
 }
 
@@ -255,7 +256,7 @@ function runner(genFun) {
 	return run(undefined);
 }
 
-function threatDetected(alertData,socket){
+export function threatDetected(alertData,socket){
 	socketServer = socket;
 	sendCoordinatesToUI(undefined,alertData);
 }
@@ -301,11 +302,11 @@ function sendCoordinatesToUI(coordinates, alertData) {
 // 	level: LEVELS[Math.floor(Math.random()*LEVELS.length)]
 // }
 // coordinates = {x_val: 0, y_val: 0, z_val: 1.0000747442245483}
-
     console.log("drone :");
     console.log(drone);
+
 	if(drone && drone.position){
-		socketServer.emit('droneUpdate', drone);
+		socketServer.emit('droneUpdate', { "droneObj" : drone });
 	}
 }
 
