@@ -81,7 +81,7 @@ io.on('connection', (socket) => {
     console.log("threat detected ..");
     console.log(data);
 
-    mainController.sendCoordinatesToUI(coordinates,data);
+    // mainController.sendCoordinatesToUI(coordinates,data);
 
   });
 
