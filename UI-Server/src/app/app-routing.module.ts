@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { DroneInfoComponent } from './dashboard/drone-info/drone-info.component';
 import { DroneConfigComponent } from './drone-config/drone-config.component';
 import { SummaryComponent } from './analytics/summary/summary.component';
+import { MapComponent } from './map/map.component';
  
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'drone-config', component: DroneConfigComponent },
   { path: 'dashboard', component: DroneInfoComponent },
   { path: 'dashboard', component: DroneInfoComponent },
-  { path: 'analytics', component: SummaryComponent }
+  { path: 'analytics', component: SummaryComponent },
+  { path: 'map', component: MapComponent }
 ];
  
 @NgModule({

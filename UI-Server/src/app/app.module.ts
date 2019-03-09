@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DroneConfigComponent } from './drone-config/drone-config.component';
 import { HeaderComponent } from './header/header.component';
 import { SummaryComponent } from './analytics/summary/summary.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import { SummaryComponent } from './analytics/summary/summary.component';
     ActivityComponent,
     HomeComponent,
     DroneConfigComponent,
-    HeaderComponent,
-    SummaryComponent
+    HeaderComponent, 
+    SummaryComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

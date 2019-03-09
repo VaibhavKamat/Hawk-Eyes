@@ -28,24 +28,29 @@ export class DroneNavMapComponent implements AfterViewInit, OnChanges {
       y: 77,
       r: 8
     };
-    this.canvas.width = 300;
-    this.canvas.height = 300;
+    this.canvas.width = 380;
+    this.canvas.height = 350;
 
     this.redraw();
-    this.move(55, 58);
+    
+    this.move(280, 335);
 
-
-    // stimulate mock position
-    var self = this;
-    setInterval(function () {
-      self.mockMove(self);
-    }, 1000)
+    // // stimulate mock position
+    // var self = this;
+    // setInterval(function () {
+    //   self.mockMove(self);
+    // }, 1000)
 
     
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-console.log(this.drone);
+
+    const x = this.drone.position.latitude % 100;
+    const y = this.drone.position.longitude % 100;
+    if (this.marker)
+    this.move(280, 335);
+    console.log("gyfggkahkh",this.drone.position);
   }
 
   redraw(): void {
@@ -63,6 +68,7 @@ console.log(this.drone);
   move(x, y): void {
     var radius = 6 + Math.floor(Math.random() * Math.floor(3))
     this.marker.x = x;
+    this.marker.y = y;
     this.marker.r = radius;
     this.redraw();
   }
