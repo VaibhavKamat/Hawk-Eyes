@@ -133,7 +133,7 @@ let coordinatesArray = [
 				"w_val": 1,
 				"x_val": 0,
 				"y_val": 0,
-				"z_val": 0.7
+				"z_val": 0.315
 			}
 		}
 	},
