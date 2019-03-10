@@ -60,7 +60,7 @@ export class DroneNavMapComponent implements AfterViewInit, OnChanges {
         response => {
           this.showPath();
           this.droneService.initiateMovement().subscribe( response => {
-            console.log("done rann maaan")
+            console.log("done rann")
           })
         },
         err => console.log('command error' + err));

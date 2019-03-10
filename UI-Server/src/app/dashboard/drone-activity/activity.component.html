@@ -1,17 +1,24 @@
-
-<h3 class="titile"> Activity </h3>
-<div class="activity-block">
-  <div  *ngFor="let activity of activityList" class="row  activity-item ">
-    <div class="col-md-2 activity-icon ">
-        <i class="material-icons">
-            {{activity.status}}
-        </i>
-    </div>
-    <div class="col-md-5 activity-title">
-        {{activity.locationInfo}}
-    </div>
-    <div class="col-md-5 activity-">
-        {{activity.timeData}} Mins Ago
+<!-- <div class="py-3">
+  <h3 class="titile"> Activity </h3>
+  <div class="activity-block px-2">
+    <div  *ngFor="let activity of activityList" class="row  activity-item ">
+      <div class="activity-title">
+          {{activity.locationInfo}}
+      </div>
+      <div class="col-md-5 activity-">
+          {{activity.timeData}} Mins Ago
+      </div>
     </div>
   </div>
-</div>
+  </div> -->
+
+
+  <div class="py-3" style="height:48vh;">
+    <h3 class="titile text-center"> Activity </h3>
+    <div class="activity-block px-2">
+      <div  *ngFor="let activity of activityList" class="activity-item px-2 ">
+        <span>{{activity.locationInfo}}</span>
+        <small class="float-right">{{activity.timeData}} Mins Ago</small>
+      </div>
+    </div>
+    </div>

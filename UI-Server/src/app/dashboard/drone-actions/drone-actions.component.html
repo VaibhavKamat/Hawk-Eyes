@@ -1,17 +1,17 @@
-<div *ngIf="drone" id="droneActionsDiv" class="col-md-12">
- <div id="actionTitle" class="row justify-content-md-center">Actions</div>
-        <div class="col-md-10 offset-md-2">
+ <div *ngIf="drone" id="droneActionsDiv" class="col-md-12">
+ <!-- <div id="actionTitle" class="row justify-content-md-center">Actions</div> -->
+        <!-- <div class="col-md-10 offset-md-2">
             <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3 " (click)="captureImage()">Capture Image</button>
             <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3" data-toggle="modal" data-target="#settingsModal">Settings</button>
             <button type="button" class="btn btn-lg btn-primary action-sub-class col-md-3" (click)="returnToBase()">Return to Base</button>
-         </div> 
+         </div>  -->
          <div class="col-md-6 offset-md-5">
-           <button id="raiseAlert" type="button" class=" btn btn-lg btn-danger action-sub-class col-md-3  " data-toggle="modal" data-target="#alertsModal" (click)="Alert()">
+           <button id="raiseAlert" type="button" class=" btn btn-lg btn-takeoff action-sub-class col-md-3  " data-toggle="modal" data-target="#alertsModal" (click)="Alert()">
              Alert !
            </button>
         </div>
- </div>
- <div class="modal fade" id="settingsModal" role="dialog">
+ </div> 
+  <div class="modal fade" id="settingsModal" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -33,28 +33,29 @@
       </div>
     </div>
   </div>
-  </div>
+  </div> 
+  
   <div class="modal fade" id="alertsModal" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div  class="modal-header">
-          <h4  id="alert-modal-title" class="modal-title">Alert !</h4>
+          <h4  id="alert-modal-title" class="modal-title" style="letter-spacing:2px;">Threat Detected</h4>
         </div>
         <div class="modal-body">
           <div class="col-md-12">
             <div class="col-md-12 alert-options">
                       
                 <button type="button" class="btn btn-warning  alertOptions">Raise Alarm</button>
-                <button type="button" class="btn btn-info  alertOptions">Initiate jammers</button>
-                <button type="button" class="btn btn-success  alertOptions">call backup !</button>
-                <button type="button" class="btn btn-primary  alertOptions">call shaktimaan</button>
+                <button type="button" class="btn btn-warning  alertOptions">Initiate Jammers</button>
+                <button type="button" class="btn btn-warning  alertOptions">Call backup</button>
+                <button type="button" class="btn btn-warning  alertOptions">Activate EMP</button>
             </div>
             <div id="alert-scene" class="col-md-12">
-                <img class="img-responsive" src="../../../assets/alertScene.jpg" />
+                <img class="img-responsive" src="../../../assets/final.png" />
 
             </div>
             <div class="col-md-12" class="finalOptions">
-                <button type="button" class="btn btn-danger">Wrath of God</button>
+                <button type="button" class="btn btn-takeoff "> <i class="fas fa-exclamation-triangle"></i> Alter HQ</button>
             </div>
             
           </div>

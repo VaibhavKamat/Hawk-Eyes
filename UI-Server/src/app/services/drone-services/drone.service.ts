@@ -17,13 +17,13 @@ export class DroneService {
 
 
   private requestUri = {
-    webnodeSocket: 'http://localhost:3000',
-    getData: 'http://localhost:5000/data',
-    captureImg: 'http://localhost:5000/capture',
-    updateSettings: 'http://localhost:5000/update',
-    returnToBase: 'http://localhost:5000/return',
-    takeOff:'http://localhost:3000/takeoff',
-    initiate:'http://localhost:3000/initiateDroneMovement'
+    webnodeSocket: 'http://10.244.25.139:3000',
+    getData: 'http://10.244.25.139:5000/data',
+    captureImg: 'http://10.244.25.139:5000/capture',
+    updateSettings: 'http://10.244.25.139:5000/update',
+    returnToBase: 'http://10.244.25.139:5000/return',
+    takeOff:'http://10.244.25.139:3000/takeoff',
+    initiate:'http://10.244.25.139:3000/initiateDroneMovement'
 };
 
  private headersOptions = {
