@@ -1,19 +1,16 @@
 import csv
 # Imports
 import os
-import json
+
 import cv2
 import numpy as np
+import socketio
 import tensorflow as tf
-import socket
 
-import file_util
 from core import drone_handler
 # Object detection imports
 from utils import label_map_util
 from utils import visualization_utils as vis_util
-from sockets.client import SocketClient
-import socketio
 
 connectString = 'http://localhost:3000'
 MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
@@ -28,16 +25,25 @@ PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
 PATH_TO_LABELS = os.path.join('data', 'mscoco_label_map.pbtxt')
 
 NUM_CLASSES = 90
-sio = socketio.Client()
+
+threatObject = {}
+
+
+class SocketClient:
+
+    def __init__(self, message):
+        self.message = message
+        sio = socketio.Client()
+
+        @sio.on('connect')
+        def on_connect():
+            sio.emit('threatAlert', self.message)
+            sio.disconnect()
+
+        sio.connect(connectString)
 
 
 class Detector:
-    cls.threatObject = {}
-
-    @sio.on('connect')
-    def on_connect():
-        sio.emit('threatAlert',threatObject)
-        sio.disconnect()
 
     def __init__(self):
         # ip = "10.244.25.16"
@@ -137,7 +143,7 @@ class Detector:
                         cv2.line(input_frame, (0, 350), (640, 350), (0, 0, 0xFF), 5)
 
                     # insert information text to video frame
-                    cv2.rectangle(input_frame, (10, 275), (230, 337), (180, 132, 109), -1)
+                    # cv2.rectangle(input_frame, (10, 275), (230, 337), (180, 132, 109), -1)
                     cv2.putText(
                         input_frame,
                         'ROI Line',
@@ -148,56 +154,56 @@ class Detector:
                         2,
                         cv2.LINE_AA,
                     )
-                    cv2.putText(
-                        input_frame,
-                        'LAST PASSED VEHICLE INFO',
-                        (11, 290),
-                        font,
-                        0.5,
-                        (0xFF, 0xFF, 0xFF),
-                        1,
-                        cv2.FONT_HERSHEY_SIMPLEX,
-                    )
-                    cv2.putText(
-                        input_frame,
-                        '-Movement Direction: ' + direction,
-                        (14, 302),
-                        font,
-                        0.4,
-                        (0xFF, 0xFF, 0xFF),
-                        1,
-                        cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                    )
-                    cv2.putText(
-                        input_frame,
-                        '-Speed(km/h): ' + speed,
-                        (14, 312),
-                        font,
-                        0.4,
-                        (0xFF, 0xFF, 0xFF),
-                        1,
-                        cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                    )
-                    '''cv2.putText(
-                        input_frame,
-                        '-Color: ' + color,
-                        (14, 322),
-                        font,
-                        0.4,
-                        (0xFF, 0xFF, 0xFF),
-                        1,
-                        cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                    )'''
-                    cv2.putText(
-                        input_frame,
-                        '-Vehicle Size/Type: ' + size,
-                        (14, 332),
-                        font,
-                        0.4,
-                        (0xFF, 0xFF, 0xFF),
-                        1,
-                        cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                    )
+                    # cv2.putText(
+                    #     input_frame,
+                    #     'LAST PASSED VEHICLE INFO',
+                    #     (11, 290),
+                    #     font,
+                    #     0.5,
+                    #     (0xFF, 0xFF, 0xFF),
+                    #     1,
+                    #     cv2.FONT_HERSHEY_SIMPLEX,
+                    # )
+                    # cv2.putText(
+                    #     input_frame,
+                    #     '-Movement Direction: ' + direction,
+                    #     (14, 302),
+                    #     font,
+                    #     0.4,
+                    #     (0xFF, 0xFF, 0xFF),
+                    #     1,
+                    #     cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                    # )
+                    # cv2.putText(
+                    #     input_frame,
+                    #     '-Speed(km/h): ' + speed,
+                    #     (14, 312),
+                    #     font,
+                    #     0.4,
+                    #     (0xFF, 0xFF, 0xFF),
+                    #     1,
+                    #     cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                    # )
+                    # '''cv2.putText(
+                    #     input_frame,
+                    #     '-Color: ' + color,
+                    #     (14, 322),
+                    #     font,
+                    #     0.4,
+                    #     (0xFF, 0xFF, 0xFF),
+                    #     1,
+                    #     cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                    # )'''
+                    # cv2.putText(
+                    #     input_frame,
+                    #     '-Vehicle Size/Type: ' + size,
+                    #     (14, 332),
+                    #     font,
+                    #     0.4,
+                    #     (0xFF, 0xFF, 0xFF),
+                    #     1,
+                    #     cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                    # )
 
                     # cv2.imshow('vehicle detection', input_frame)
 
@@ -216,19 +222,19 @@ class Detector:
                     if predicted_speed > 40 and predicted_speed < 100:
                         position = self.video_feed_drone.get_position()
                         msg["location"] = position
-                        msg["data"] = output_frame
+                        # msg["data"] = output_frame
                         threat = {
                             'message': "Threat detected",
-                            'level' : "High"
+                            'level': "High"
                         }
                         msg["threat"] = threat
                         print("Please write the code for Alarm in the UI", predicted_speed)
-                        cls.threatObject = msg
-                        sio.connect(connectString)
+
+                        SocketClient(msg)
 
                     else:
                         msg["Threat"] = False
-                    #self.client_socket.send(msg)
+                    # self.client_socket.send(msg)
                     # file_util.write_file(os.path.normpath("image_data" + '/image%03d.png' % idx), output_frame)
                     idx = idx + 1
                     yield (b'--frame\r\n'
