@@ -34,7 +34,8 @@ app.use(bodyParser.json());
 var originsWhitelist = [
   'http://localhost:4200',
   'http://10.244.25.137:4200',
-  'http://10.244.25.15:4200'
+  'http://10.244.25.15:4200',
+  'http://10.244.46.21:4200'
 ];
 var corsOptions = {
   origin: function(origin, callback){
@@ -82,12 +83,16 @@ io.on('connection', (socket) => {
   socket.on('threatAlert', (data) => {
     console.log("threat detected ..");
     console.log(data);
-    mainController.threatDetected(data,socket);
+    // mainController.threatDetected(data,socket);
   });
 
   io.emit("droneUpdate", { type: "new-message",  'droneObj' :  droneObj });
 });
 
+app.use("/activateThreat",function(req,res){
+  mainController.threatDetected(true,undefined);
+  res.send();
+});
 
 app.use("/start",function(req,res){
   mainController.intiateSocketFlow();

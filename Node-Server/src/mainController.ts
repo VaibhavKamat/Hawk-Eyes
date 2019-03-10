@@ -241,7 +241,7 @@ function* sendCoordinatesDrone() {
 			let pythonResponse = JSON.parse(data)
 			lastResponse = data;
 			if(pythonResponse instanceof Object){
-				sendCoordinatesToUI(pythonResponse,null,threatCoordinate);
+				sendCoordinatesToUI(pythonResponse,threatCoordinate);
 			}
 		}catch(e){
 				console.log(e)
@@ -265,11 +265,13 @@ function runner(genFun) {
 }
 
 export function threatDetected(alertData,socket){
-	socketServer = socket;
-	sendCoordinatesToUI(undefined,alertData,undefined);
+	if(socket){
+		socketServer = socket;
+	}
+	sendCoordinatesToUI(undefined,alertData);
 }
 
-function sendCoordinatesToUI(coordinates, alertData,threatFlag) {
+function sendCoordinatesToUI(coordinates,threatFlag) {
 
 	var tempCoordinates
 	let LEVELS = ["success", "danger", "warning"];
@@ -280,26 +282,30 @@ function sendCoordinatesToUI(coordinates, alertData,threatFlag) {
 		tempCoordinates = coordinates
 	}
 	console.log(tempCoordinates);
-	let drone  = {
-    id: "A0123G",
-    name: "Drone AR",
-    battery: 78,
-    locationName: locations.pop(),
-    position: {
-			latitude: tempCoordinates.x,
-    	longitude: tempCoordinates.y
-		},
-    flightStatus: "Online",
-    speed: 17,
-    altitude: 173,
-    upTime: 67,
-    timeLeft: 278,
-		signalStrength: "Good",
-		threat: {}
+	let drone;
+	if(tempCoordinates){
+		drone  = {
+		id: "A0123G",
+		name: "Drone AR",
+		battery: 78,
+		locationName: locations.pop(),
+		position: {
+				latitude: tempCoordinates.x,
+			longitude: tempCoordinates.y
+			},
+		flightStatus: "Online",
+		speed: 17,
+		altitude: 173,
+		upTime: 67,
+		timeLeft: 278,
+			signalStrength: "Good",
+			threat: {}
+		}
 	}
-
 	if (threatFlag){
-
+		if(!drone){
+			drone = {}
+		}
 		drone.threat = {
 				message: "Threat Detected",
 				level: LEVELS[Math.floor(Math.random()*LEVELS.length)]

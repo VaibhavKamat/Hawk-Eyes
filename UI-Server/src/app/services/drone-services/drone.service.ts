@@ -14,16 +14,16 @@ import { DroneRequestErrorHandlersService } from './../error-handlers/drone-requ
 export class DroneService {
 
   private nodeSocket;
-
+ private url='http://10.244.46.21';
 
   private requestUri = {
-    webnodeSocket: 'http://10.244.25.139:3000',
-    getData: 'http://10.244.25.139:5000/data',
-    captureImg: 'http://10.244.25.139:5000/capture',
-    updateSettings: 'http://10.244.25.139:5000/update',
-    returnToBase: 'http://10.244.25.139:5000/return',
-    takeOff:'http://10.244.25.139:3000/takeoff',
-    initiate:'http://10.244.25.139:3000/initiateDroneMovement'
+    webnodeSocket: this.url+':3000',
+    getData: this.url+':5000/data',
+    captureImg: this.url+':5000/capture',
+    updateSettings: this.url+':5000/update',
+    returnToBase: this.url+':5000/return',
+    takeOff:this.url+':3000/takeoff',
+    initiate:this.url+':3000/initiateDroneMovement'
 };
 
  private headersOptions = {

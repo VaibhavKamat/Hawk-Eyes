@@ -18,8 +18,7 @@ export class AnalyticsGraphsComponent implements OnInit {
       bindto: '#linegraph',
           data: {
               columns: [
-                  ['data1', 30, 200, 100, 400, 150, 250],
-                  ['data2', 50, 20, 10, 40, 15, 25]
+                  ['Number of alerts', 10, 17, 25, 33, 37, 45]
               ]
           }
       });
@@ -30,8 +29,8 @@ export class AnalyticsGraphsComponent implements OnInit {
           data: {
               // iris data from R
                 columns: [
-                  ['data1', 30],
-                  ['data2', 120],
+                  ['True Positives', 30],
+                  ['True Negatives', 120],
               ],
               type: 'pie'
           },
@@ -63,8 +62,9 @@ export class AnalyticsGraphsComponent implements OnInit {
         type: 'bar',
         columns: [
             ['x', '2019-02-22', '2019-02-23', '2019-02-24', '2019-02-25', '2019-02-26'],
-            ['true-positive', 10, 15, 20, 40, 60],
-            ['false-positive', 20, 22, 26, 52, 65]
+            ['True Positives', 40, 52, 66, 72, 85], 
+            ['True Negatives', 10, 15, 20, 28, 35]
+           
         ],
         
     },
