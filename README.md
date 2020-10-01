@@ -1,6 +1,3 @@
-A simulated drone-based system for sensor analysis and data collection using Microsoft Airsim, for use cases in defense
-
-
 var originsWhitelist = [
   'http://localhost:4200'
 ];
