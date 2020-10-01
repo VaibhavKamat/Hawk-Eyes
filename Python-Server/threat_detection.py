@@ -44,7 +44,7 @@ class SocketClient:
 
 
 class Detector:
-
+    '''Code for threat detection from a video stream'''
     def __init__(self):
         # ip = "10.244.25.16"
         # self.client_socket = SocketClient(socket.gethostname(), 5010)
